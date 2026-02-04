@@ -56,3 +56,8 @@ To maintain a clean portfolio, all new weekly content **MUST** follow this stric
     *   **User-Driven**: The Agent should prompt the user to input keys, region, or secrets directly into the terminal, rather than passing them as arguments in a background script.
     *   **Credential Safety**: Never commit `.env` files or hardcoded credentials to git.
 
+8.  **📝 The "First-Time" Lab Guide**:
+    *   **Requirement**: Every new week MUST include a `LAB_GUIDE.md`.
+    *   **Content**: A simple, copy-paste friendly checklist for the user to run the lab independently (e.g., "Step 1: Run setup.sh", "Step 2: SSH in").
+    *   **Goal**: The user should be able to burn down and rebuild the lab without the Agent's help.
+
