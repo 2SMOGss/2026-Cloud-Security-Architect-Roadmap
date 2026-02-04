@@ -1,0 +1,15 @@
+{
+  "name": "VitalStream-Cloud-Security-Architect",
+  "version": "1.0.0",
+  "primary_language": "bash",
+  "secondary_language": "python",
+  "frameworks": ["aws-cdk", "aws-cli"],
+  "context": {
+    "industry": "Medical Logistics",
+    "compliance": ["HIPAA", "NIST-800-53"],
+    "certification_target": "AWS SAA-C03",
+    "phase": "1",
+    "week": "1"
+  },
+  "agent_instructions": "Focus on secure infrastructure-as-code. Always prioritize least-privilege access and data isolation. Refer to README.md for business logic before suggesting changes."
+}

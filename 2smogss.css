@@ -1,0 +1,63 @@
+/* @theme 2smogss */
+
+@import 'default';
+
+/* Global Slide Settings with Auto-Background */
+section {
+    width: 1280px;
+    height: 720px;
+    padding: 50px;
+    background-color: #1e1e1e; /* Dark Charcoal */
+    color: #d1d1d1; /* Ash Grey Text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* Background Logo Integration */
+    background-image: url('2SMOGss logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /* This creates the faded effect directly in the theme */
+    background-blend-mode: overlay; 
+    opacity: 1; 
+}
+
+/* Ensure the background image stays faded behind the text */
+section::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(30, 30, 30, 0.9); /* Adjust 0.9 to make logo darker/lighter */
+    z-index: -1;
+}
+
+/* Headers: Fire Orange (D754-3C) */
+h1, h2 {
+    color: #d7543c; 
+    border-bottom: 3px solid #3b3838;
+    text-transform: uppercase;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Other Elements */
+h3, h4 { color: #80735c; }
+strong { color: #f2a65a; }
+a { color: #d7543c; }
+
+code {
+    background: #2d2d2d;
+    color: #fab387;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+blockquote {
+    background: rgba(37, 37, 37, 0.8);
+    border-left: 8px solid #d7543c;
+    color: #80735c;
+    font-style: italic;
+    padding: 20px;
+}
