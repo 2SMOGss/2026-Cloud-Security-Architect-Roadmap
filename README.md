@@ -7,8 +7,18 @@ Welcome to my 24-week simplified roadmap to the **AWS Solutions Architect Associ
 
 | Week | Phase | Topic | Link |
 | :-- | :--- | :--- | :--- |
-| **01** | Foundation | **Securing a Medical VPC** | [📂 Open Lab Guide](./Week_01_Medical_VPC/README.md) |
-| **02** | Security | Linux Auditing & RBAC | *(Coming Soon)* |
+| **01** | Foundation | **Securing a Medical VPC** | [📂 Open Lab](./Week_01_Medical_VPC/README.md) |
+| **02** | Security | Linux Auditing & RBAC | [📂 Open Lab](./Week_02_Linux_Security/README.md) |
+| **03-04** | Network | Networking Fundamentals | [📂 Open Lab](./Week_03-04_Networking_Fundamentals/README.md) |
+| **05** | Observability | Incident Response | [📂 Open Lab](./Week_05_Observability_IR/README.md) |
+| **06** | Capstone | **Web Platform Project** | [📂 Open Lab](./Week_06_Capstone_Web_Platform/README.md) |
+| **05-07** | IAM | Identity & Access | [📂 Open Lab](./Week_05-07_IAM_Access/README.md) |
+| **08-10** | Data | Encryption & KMS | [📂 Open Lab](./Week_08-10_Data_Protection/README.md) |
+| **11-13** | Resilience | High Availability | [📂 Open Lab](./Week_11-13_High_Availability/README.md) |
+| **14-16** | Prep | Certification Blitz | [📂 Open Lab](./Week_14-16_Cert_Prep/README.md) |
+| **17-20** | IaC | CDK Automation | [📂 Open Lab](./Week_17-20_CDK_Automation/README.md) |
+| **21-22** | Monitor | Monitoring & Response | [📂 Open Lab](./Week_21-22_Monitoring_Response/README.md) |
+| **23-24** | Migration | **Final Project** | [📂 Open Lab](./Week_23-24_Final_Migration/README.md) |
 
 ## 🗺️ Master Plan
 See the interactive roadmap below (click nodes to navigate):
