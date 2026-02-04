@@ -45,3 +45,9 @@ To maintain a clean portfolio, all new weekly content **MUST** follow this stric
     *   **File Name**: `diagram.mermaid` inside the weekly folder.
     *   **Content**: Visualizes the architecture or process for that specific week.
 
+6.  **⛔ NO Shared Code ("The Time Capsule Rule")**:
+    *   **Do not** create shared folders (e.g., `utils/`, `scripts/`) in the root.
+    *   **Do not** reference files from previous weeks (e.g., `../Week_01/script.sh`).
+    *   **Action**: If you need a script from a previous week, **COPY IT** into the current week's folder.
+    *   *Why?* This ensures that Week 1 remains "frozen in time" and works forever, even if Week 10 evolves the code.
+
