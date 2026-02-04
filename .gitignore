@@ -4,6 +4,8 @@ aws_credentials
 credentials
 secrets.json
 .env
+*.pem
+
 
 # Python
 __pycache__/
