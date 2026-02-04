@@ -1,6 +1,9 @@
 ---
 marp: true
 theme: 2smogss
+paginate: true
+header: '🚀 2026 Cloud Security Architect Roadmap'
+footer: 'Robert Chich | Build In Public'
 ---
 
 # Phase 1: Foundations & Shell Automation
@@ -63,6 +66,3 @@ theme: 2smogss
 1. **The Visual:** When you post the Week 1 update, a screenshot of your VS Code terminal running the Bash script is perfect.
 2. **The Video:** Use a screen recorder (like Loom or OBS) to show a 10-second clip of your `cdk deploy` successfully building the network in the AWS Console.
 3. **The Tagging:** Tag @awscloud or @JeffBarr (if appropriate) to get more eyes on your progress.
-
-
-
