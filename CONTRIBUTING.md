@@ -51,3 +51,8 @@ To maintain a clean portfolio, all new weekly content **MUST** follow this stric
     *   **Action**: If you need a script from a previous week, **COPY IT** into the current week's folder.
     *   *Why?* This ensures that Week 1 remains "frozen in time" and works forever, even if Week 10 evolves the code.
 
+7.  **🛡️ Interactive Configuration Rule**:
+    *   **Prompt, Don't Assume**: The Agent must never auto-execute configuration commands containing sensitive credentials without explicit user approval.
+    *   **User-Driven**: The Agent should prompt the user to input keys, region, or secrets directly into the terminal, rather than passing them as arguments in a background script.
+    *   **Credential Safety**: Never commit `.env` files or hardcoded credentials to git.
+
