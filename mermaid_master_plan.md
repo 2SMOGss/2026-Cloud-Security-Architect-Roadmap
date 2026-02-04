@@ -13,6 +13,7 @@ graph TD
         W1[Week 1: AWS Core + Networking<br/><i>VPC, Subnets, Python to Bash</i>]
         click W1 "./Week_01_Medical_VPC/README.md" "Open Week 1 Lab"
         W2[Week 2: Linux Permissions & Security<br/><i>RBAC, Audit Logs</i>]
+        click W2 "./Week_02_Linux_Security/README.md" "Open Week 2 Lab"
         W3_4[Weeks 3-4: Networking Fundamentals<br/><i>CIDR, Route Tables, Multi-AZ VPC</i>]
         W5[Week 5: Observability + IR<br/><i>CloudWatch, Watchdog Script</i>]
         W6[Week 6: Capstone<br/><i>Production Web Platform</i>]

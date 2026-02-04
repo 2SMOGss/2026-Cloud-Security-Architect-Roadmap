@@ -1,3 +1,30 @@
 graph TD
-    Title[?? Week_02_Linux_Security Placeholder Diagram]
-    style Title fill:#fff,stroke:#333,stroke-width:2px,color:#000
+    %% Styling based on 2smogss theme (Dark/Blue)
+    classDef user fill:#0d47a1,stroke:#90caf9,stroke-width:2px,color:#fff;
+    classDef group fill:#004d40,stroke:#80cbc4,stroke-width:2px,color:#fff;
+    classDef object fill:#b71c1c,stroke:#ef9a9a,stroke-width:2px,color:#fff;
+    classDef action fill:#37474f,stroke:#cfd8dc,stroke-width:1px,color:#fff;
+
+    subgraph Access_Control ["Linux Access Control Model"]
+        direction TB
+        
+        U(User: Alice) -->|Identifier: UID| Kernel
+        G(Group: Developers) -->|Identifier: GID| Kernel
+        
+        Kernel{Kernel Check} 
+        
+        Kernel -->|Request Read| File(Target: secrets.txt)
+        
+        File -.->|r--| Owner(Owner Perms: Alice)
+        File -.->|rw-| GrpPerms(Group Perms: Developers)
+        File -.->|---| Other(Other Perms: World)
+        
+        Owner --> Allowed([✅ Access Granted])
+        GrpPerms --> Allowed
+        Other --> Denied([❌ Permission Denied])
+    end
+
+    class U user;
+    class G group;
+    class File object;
+    class Kernel,Owner,GrpPerms,Other action;
