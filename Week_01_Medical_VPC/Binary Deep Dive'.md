@@ -89,6 +89,3 @@ However, if you were building a **Global Medical Network** with 500 small clinic
 **The Professional Solution:** Use a **/27** or **/28** for small satellite clinics to preserve your address space for the main hospital hubs.
 
 ---
-
-# 🚀 Next Step
-### Would you like me to help you write the `verify_carving.sh` script to prove these subnets are separated correctly?
