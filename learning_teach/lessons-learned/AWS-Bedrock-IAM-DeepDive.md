@@ -1,7 +1,3 @@
-<a href="https://imgur.com/a/wcMz90M"><img src="https://imgur.com/a/wcMz90M" alt="Alt text" width="300"/></a>
-
-
-
 ![My Image Description](https://github.com/2SMOGss/2026-Cloud-Security-Architect-Roadmap/blob/main/learning_teach/lessons-learned/1773168379397.png)
 
 
