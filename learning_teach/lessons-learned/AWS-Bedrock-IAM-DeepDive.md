@@ -1,3 +1,6 @@
+![My Image Description](https://imgur.com/a/wcMz90M)
+
+
 # Technical Case Study: AWS Bedrock Integration & IAM Hardening
 **Project:** OpenClaw AI Mentor Deployment  
 **Date:** March 2026  
