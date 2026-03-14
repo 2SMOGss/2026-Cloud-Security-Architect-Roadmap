@@ -10,7 +10,7 @@ Welcome to my 24-week simplified roadmap to the **AWS Solutions Architect Associ
 | **01** | Foundation | **Securing a Medical VPC** | [📂 Open Lab](./Week_01_Medical_VPC/README.md) |
 | **02** | Security | Linux Auditing & RBAC | [📂 Open Lab](./Week_02_Linux_Security/README.md) |
 | **03-04** | Network | Networking Fundamentals | [📂 Open Lab](./Week_03-04_Networking_Fundamentals/README.md) |
-| **05** | Observability | Incident Response | [📂 Open Lab](./Week_05_Observability_IR/README.md) |
+| **05** | Observability | Incident Response | [📂 Open Lab](./Week_05_Observability_IR/README.md) | ✅ |
 | **06** | Capstone | **Web Platform Project** | [📂 Open Lab](./Week_06_Capstone_Web_Platform/README.md) |
 | **05-07** | IAM | Identity & Access | [📂 Open Lab](./Week_05-07_IAM_Access/README.md) |
 | **08-10** | Data | Encryption & KMS | [📂 Open Lab](./Week_08-10_Data_Protection/README.md) |

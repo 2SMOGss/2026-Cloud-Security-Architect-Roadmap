@@ -54,6 +54,8 @@ APP_SUBNET_ID=$(aws ec2 create-subnet \
     --query 'Subnet.SubnetId' \
     --output text)
 aws ec2 create-tags --resources $APP_SUBNET_ID --region $REGION --tags Key=Name,Value="VitalStream-App-Subnet"
+# Explicitly Deny Public IPs in Private Subnet
+aws ec2 modify-subnet-attribute --subnet-id $APP_SUBNET_ID --no-map-public-ip-on-launch
 echo "✅ App Subnet Created: $APP_SUBNET_ID"
 
 # 4c. Isolated Subnet (The 'Patient PHI' Tier)
@@ -64,6 +66,8 @@ ISO_SUBNET_ID=$(aws ec2 create-subnet \
     --query 'Subnet.SubnetId' \
     --output text)
 aws ec2 create-tags --resources $ISO_SUBNET_ID --region $REGION --tags Key=Name,Value="VitalStream-Iso-Subnet"
+# Explicitly Deny Public IPs in Isolated Subnet
+aws ec2 modify-subnet-attribute --subnet-id $ISO_SUBNET_ID --no-map-public-ip-on-launch
 echo "✅ Isolated PHI Subnet Created: $ISO_SUBNET_ID"
 
 # 4d. Security Hardening: Revoke Default Security Group Rules (NIST/HIPAA Control)
@@ -103,6 +107,9 @@ ROLE_NAME="VitalStream-FlowLog-Role"
 aws iam create-role --role-name $ROLE_NAME --assume-role-policy-document "$TRUST_POLICY" --region $REGION > /dev/null 2>&1
 aws iam attach-role-policy --role-name $ROLE_NAME --policy-arn arn:aws:iam::aws:policy/CloudWatchLogsFullAccess --region $REGION
 ROLE_ARN=$(aws iam get-role --role-name $ROLE_NAME --region $REGION --query 'Role.Arn' --output text)
+
+echo "⏳ Waiting 10 seconds for IAM Role propagation..."
+sleep 10
 
 # 5b. Create CloudWatch Log Group
 LOG_GROUP_NAME="VitalStream-VPC-FlowLogs"

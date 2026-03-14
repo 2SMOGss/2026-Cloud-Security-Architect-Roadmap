@@ -21,10 +21,11 @@
 
 ## 📍 Current Status
 * **Phase:** 1 (Foundations & Shell Automation).
-* **Week:** 1 (Python to Bash Migration).
-* **Completed Tasks:** * Initial 3-Tier VPC Architecture defined.
-    * Bash creation and verification scripts drafted.
-    * Antigravity Workspace initialized.
+* **Week:** 2 (IAM + Security Architecture).
+* **Completed Tasks:** * Week 1: 3-Tier Medical VPC Architecture (Bash/CLI).
+    * Default Security Group Hardening implemented and verified.
+    * VPC Flow Logs enabled (CloudWatch).
+    * Documentation for Week 1 created in `learning_teach/`.
 
 ## 🤖 AI Interaction Protocol
 * **Antigravity Agent Role:** Cloud Engineer / Executioner.
@@ -37,3 +38,11 @@
 *   **Naming Convention:** `WeekX_Topic_Name.md` (e.g., `Week1_Securing_Medical_VPC.md`).
 *   **Organization:** If `learning_teach/` becomes cluttered, refactor into subfolders (e.g., `learning_teach/Week_1/`).
 *   **Content Goal:** Create content suitable for "Building in Public" (X/Twitter posts).
+
+POLICY: Manual Terminal Execution (MTE)
+Scope: All terminal commands, AWS CLI operations, and Bash script executions.
+Constraint: The AI is strictly prohibited from executing commands or assuming a command was successful without user-provided output.
+Action: > 1. All commands must be presented in a bash or python code block.
+2. The AI must pause and explicitly ask the user to: "Please execute the above in your terminal and provide the output."
+3. Python scripts intended for automation must first be reviewed as "Draft" before the user is prompted to save and run them.
+Verification: Success is only verified once the user pastes the CLI JSON response or exit code into the chat.

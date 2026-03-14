@@ -1,3 +1,10 @@
 graph TD
-    Title[?? Week_05_Observability_IR Placeholder Diagram]
-    style Title fill:#fff,stroke:#333,stroke-width:2px,color:#000
+    VPC[VitalStream VPC] -->|Traffic| ENI[Network Interface]
+    ENI -->|Capture| FL[VPC Flow Logs]
+    FL -->|Publish| CWL[CloudWatch Logs]
+    CWL -->|Metric Filter| MF[Filter: REJECT]
+    MF -->|Trigger| AL[CloudWatch Alarm]
+    AL -->|Notify| SNS[Amazon SNS: Security Team]
+
+    style CWL fill:#f96,stroke:#333
+    style FL fill:#bbf,stroke:#333
