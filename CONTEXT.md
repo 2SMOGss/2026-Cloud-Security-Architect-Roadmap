@@ -20,12 +20,13 @@
 * **Security Principle:** Least Privilege and Zero-Trust architecture.
 
 ## 📍 Current Status
-* **Phase:** 1 (Foundations & Shell Automation).
-* **Week:** 2 (IAM + Security Architecture).
-* **Completed Tasks:** * Week 1: 3-Tier Medical VPC Architecture (Bash/CLI).
-    * Default Security Group Hardening implemented and verified.
-    * VPC Flow Logs enabled (CloudWatch).
-    * Documentation for Week 1 created in `learning_teach/`.
+* **Phase:** 2 (Secure Architecture Design).
+* **Week:** 06 (Capstone Web Platform).
+* **Completed Tasks:**
+    * Week 1-2: VPC Hardening, Linux Security Auditing.
+    * Week 3-4: Networking Core (NACLs, Subnet isolation).
+    * Week 5: VPC Flow Logs & Incident Response logic.
+    * Documentation for Weeks 1-5 created and refined.
 
 ## 🤖 AI Interaction Protocol
 * **Antigravity Agent Role:** Cloud Engineer / Executioner.

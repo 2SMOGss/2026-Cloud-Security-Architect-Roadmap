@@ -8,7 +8,9 @@ mindmap
       Weeks 3-4: Networking Core (VPC/Subnets)
     (Phase 2: Security Design)
       ::icon(fa fa-shield-halved)
-      Weeks 5-7: IAM & Least Privilege
+      Week 5: Observability & Monitoring
+      Week 6: Capstone Web Platform
+      Week 7: IAM & Access Control
       Weeks 8-10: KMS & Patient Data Encryption
     (Phase 3: The Certification)
       ::icon(fa fa-certificate)

@@ -6,7 +6,7 @@ header: '🚀 2026 Cloud Security Architect Roadmap'
 footer: 'Robert Chich | Build In Public'
 ---
 
-# Phase 1: Foundations & Shell Automation
+# Phase 1: Foundations & Shell Automation ✅
 ### Weeks 1 - 4
 **Goal:** Transition from "General IT" to "Cloud Operations."
 
@@ -20,7 +20,7 @@ footer: 'Robert Chich | Build In Public'
 
 ---
 
-# Phase 2: Secure Architecture Design
+# Phase 2: Secure Architecture Design 🏗️
 ### Weeks 5 - 10
 **Goal:** Master the "Design Secure Architectures" domain.
 
