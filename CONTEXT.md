@@ -14,10 +14,15 @@
 * **Key Needs:** Secure remote access for sales teams and total isolation for Patient Protected Health Information (PHI).
 
 ## 🛠️ Technical Strategy
-* **Methodology:** 24-Week Structured Roadmap (Build-in-Public).
+* **Methodology:** 16-Week AI-First Structured Roadmap (Roadmap V2).
 * **Cloud Provider:** AWS (Primary Region: us-east-1).
-* **Infrastructure as Code:** Moving from Bash/CLI scripts to AWS CDK (Python).
+* **Infrastructure as Code:** Mandatory AWS CDK (Python).
 * **Security Principle:** Least Privilege and Zero-Trust architecture.
+
+## 🛡️ The Mentors "Ephemeral Architect" Protocol (Golden Rules)
+1. **Low-Cost Ephemerality:** All labs must be "spun up" for learning and "torn down" (cdk destroy) immediately after. No resources left running.
+2. **IaC First:** AWS CDK (Python) is the mandatory standard. No more manual console or bash-only infrastructure.
+3. **Build in Public (BiP):** Documentation of the "Build -> Verify -> Destroy" cycle is a hard requirement for each lab.
 
 ## 📍 Current Status
 * **Phase:** 2 (Secure Architecture Design).
