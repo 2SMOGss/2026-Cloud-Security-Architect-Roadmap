@@ -31,3 +31,6 @@ Thumbs.db
 
 # Study Materials
 learning_teach/
+
+# Worktrees
+.worktrees/
