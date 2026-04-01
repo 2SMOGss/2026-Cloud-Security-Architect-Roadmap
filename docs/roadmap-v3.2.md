@@ -5,14 +5,14 @@
 
 | Block | Phase | Weeks | Focus | Goal |
 | :--- | :--- | :--- | :--- | :--- |
-| **CAB-01** | Foundations | 1-3 | **VPC Plumbing & CLI** | Build VitalStream 3-tier VPC manually via Bash. No Console. |
+| **CAB-01** | Foundations | 1-3 | **VPC Plumbing & CLI** | Build VitalStream 3-tier VPC. Review Deck: "VPC Packet Journey". |
 | **CAB-02** | Security | 4-6 | **IAM & Zero-Trust** | IAM Identity Center & Least Privilege. Initialize EPT & Ulta Agents. |
 | **CAB-03** | Storage/Cost | 7-9 | **KMS & S3 Lifecycle** | Encryption at rest (KMS). Implement S3 Lifecycle Policies for PHI cost-tiering. |
 | **CAB-04** | Serverless | 10-12 | **The Serverless Triage** | Decouple app via Lambda, SQS, and EventBridge. Implement Token Watchdog. |
 | **CAB-05** | Resilience | 13-15 | **High Availability** | Multi-AZ RDS, ASG, and Global Accelerator for "Zero-Downtime" medical access. |
 | **CAB-06** | Data Flow | 16-18 | **Ingestion & DevOps** | Kinesis for telemetry ingestion; AWS Glue for ETL. Automate via GitHub Actions. |
 | **CAB-07** | Intelligence | 19-21 | **SageMaker Security** | Private Link and EMR security. Bedrock Guardrails for compliance auditing. |
-| **CAB-08** | Final Blitz | 22-24 | **Cert & Portfolio** | SAA-C03 Exam. Launch Portfolio Publicist for job market. |
+| **CAB-08** | Final Blitz | 22-24 | **Cert & Portfolio** | SAA-C03 Exam prep. Review all "Architect Blueprint" slide decks from `learning_teach/`. |
 
 ## 🛡️ Core Operational Rules
 
