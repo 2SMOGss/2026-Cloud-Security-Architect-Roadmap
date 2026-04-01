@@ -1,0 +1,19 @@
+Project CAB-01: Moving from Bash to CDK. The "Ephemeral Architect" Evolution.
+
+The Problem: Infrastructure Debt. In Week 01, we built the Medical VPC using 130+ lines of Bash. It was hard to update, maintain, and destroy safely. It had no high-level abstractions.
+
+The Solution: AWS CDK (Python). We've refactored the entire network foundation into 35 lines of Python code. Infrastructure as True Code, not just a script.
+
+Before: The Bash Script. With 136 lines of CLI commands, we had to manually manage VPC IDs, Subnet CIDRs, and Route Table associations. It was tedious and error-prone.
+
+After: The CDK Stack. By leveraging high-level constructs, we define our VPC, subnet tiers, and connectivity in just a few lines of Python. CDK handles the complexity under the hood.
+
+Zero-Trust Highlights. First, isolated subnets. The PHI tier has zero routing to the internet. Second, native Flow Logs are baked in for compliance. Finally, one-command cleanup ensures we only pay for what we use.
+
+Result: Successful Deployment. We've validated and deployed the ystack! CDK automatically applies collision-proof names, scaling seamlessly and preventing the orphan VPC issues we had with Bash.
+
+Result: Bash Orphans vs. CDK. As we can see in this comparison, CDK's managed approach is far more organized and reliable.
+
+Architecting for the cloud means writing code that describes the world you want, not the steps to build it.
+
+Thank you for following along! Let's connect on Twitter, LinkedIn, and GitHub. Build In Public!

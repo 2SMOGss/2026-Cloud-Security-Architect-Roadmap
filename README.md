@@ -5,20 +5,16 @@ Welcome to my 24-week simplified roadmap to the **AWS Solutions Architect Associ
 
 ## 🗂️ Courseware & Weekly Labs
 
-| Week | Phase | Topic | Link |
-| :-- | :--- | :--- | :--- |
-| **01** | Foundation | **Securing a Medical VPC** | [📂 Open Lab](./Week_01_Medical_VPC/README.md) | ✅ |
-| **02** | Security | Linux Auditing & RBAC | [📂 Open Lab](./Week_02_Linux_Security/README.md) | ✅ |
-| **03-04** | Network | Networking Fundamentals | [📂 Open Lab](./Week_03-04_Networking_Fundamentals/README.md) | ✅ |
-| **05** | Observability | Incident Response | [📂 Open Lab](./Week_05_Observability_IR/README.md) | ✅ |
-| 06 | Capstone: Web Platform | [Week 06](./Week_06_Capstone_Web_Platform) | ✅ |
-| **05-07** | IAM | Identity & Access | [📂 Open Lab](./Week_05-07_IAM_Access/README.md) | 🚧 |
-| **08-10** | Data | Encryption & KMS | [📂 Open Lab](./Week_08-10_Data_Protection/README.md) |
-| **11-13** | Resilience | High Availability | [📂 Open Lab](./Week_11-13_High_Availability/README.md) |
-| **14-16** | Prep | Certification Blitz | [📂 Open Lab](./Week_14-16_Cert_Prep/README.md) |
-| **17-20** | IaC | CDK Automation | [📂 Open Lab](./Week_17-20_CDK_Automation/README.md) |
-| **21-22** | Monitor | Monitoring & Response | [📂 Open Lab](./Week_21-22_Monitoring_Response/README.md) |
-| **23-24** | Migration | **Final Project** | [📂 Open Lab](./Week_23-24_Final_Migration/README.md) |
+| Week | Block | Phase | Focus | Goal |
+| :--- | :--- | :--- | :--- | :--- |
+| **01-03** | **CAB-01** | Foundations | **VPC Plumbing & CLI** | Build 3-tier VPC via Bash (No Console). |
+| **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** | Initialize EPT & Ulta Agents. |
+| **07-09** | **CAB-03** | Data | **KMS & PHI Protection** | HIPAA/NIST Auditing. |
+| **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** | Deploy Token Watchdog. |
+| **13-15** | **CAB-05** | Resilience | **High Availability** | Zero-Downtime Architecture. |
+| **16-18** | **CAB-06** | DevOps | **CI/CD & VoltOps** | GitHub Actions Automation. |
+| **19-21** | **CAB-07** | Intelligence | **SageMaker Security** | Data Science Isolation. |
+| **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** | SAA-C03 & Market Launch. |
 
 ## 🗺️ Master Plan
 See the interactive roadmap below (click nodes to navigate):

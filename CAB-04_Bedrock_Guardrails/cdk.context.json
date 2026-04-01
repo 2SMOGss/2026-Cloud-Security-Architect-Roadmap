@@ -1,0 +1,64 @@
+{
+  "vpc-provider:account=570435244246:filter.tag:Project=VitalStream-Medical-Cloud:region=us-east-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0b8a767698259bbdc",
+    "vpcCidrBlock": "10.50.0.0/16",
+    "ownerAccountId": "570435244246",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0e3b730f27e93e6df",
+            "cidr": "10.50.0.0/24",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-08dd6aa8593efdad8"
+          },
+          {
+            "subnetId": "subnet-057ed08e58ed9bbbb",
+            "cidr": "10.50.1.0/24",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-0aac3f4633af2a8c9"
+          }
+        ]
+      },
+      {
+        "name": "App",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-0ce79c8c03bd95927",
+            "cidr": "10.50.2.0/24",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-0e4bb85f1371be97b"
+          },
+          {
+            "subnetId": "subnet-00c2b97b6770f6cb9",
+            "cidr": "10.50.3.0/24",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-04c2ab7539a2426b7"
+          }
+        ]
+      },
+      {
+        "name": "Iso-PHI",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-0f0b42c7a39bf19ff",
+            "cidr": "10.50.4.0/24",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-025a5eb82bda56fed"
+          },
+          {
+            "subnetId": "subnet-0f46642a36bc3d580",
+            "cidr": "10.50.5.0/24",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-00db22271feedb41f"
+          }
+        ]
+      }
+    ]
+  }
+}

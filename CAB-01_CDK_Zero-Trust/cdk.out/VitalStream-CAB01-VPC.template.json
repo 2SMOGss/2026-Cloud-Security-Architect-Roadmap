@@ -1,0 +1,986 @@
+{
+ "Resources": {
+  "VitalStreamProdVPC33A35CF9": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.50.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Resource"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet1SubnetF6640A67": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.50.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1/Subnet"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet1RouteTable6EF1437D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet1RouteTableAssociation400ECFD9": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet1RouteTable6EF1437D"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet1SubnetF6640A67"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet1DefaultRoute402EF17F": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VitalStreamProdVPCIGW37AC97B7"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet1RouteTable6EF1437D"
+    }
+   },
+   "DependsOn": [
+    "VitalStreamProdVPCVPCGW4BF19ADA"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet1EIP44C6E485": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1/EIP"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet1NATGateway4BCAD46F": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "VitalStreamProdVPCPublicSubnet1EIP44C6E485",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet1SubnetF6640A67"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "DependsOn": [
+    "VitalStreamProdVPCPublicSubnet1DefaultRoute402EF17F",
+    "VitalStreamProdVPCPublicSubnet1RouteTableAssociation400ECFD9"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet1/NATGateway"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet2SubnetECD6D52F": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.50.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2/Subnet"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet2RouteTableE880FCA6": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet2RouteTableAssociation21FF9980": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet2RouteTableE880FCA6"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet2SubnetECD6D52F"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet2DefaultRouteA91D4771": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VitalStreamProdVPCIGW37AC97B7"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet2RouteTableE880FCA6"
+    }
+   },
+   "DependsOn": [
+    "VitalStreamProdVPCVPCGW4BF19ADA"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet2EIPAA5ACAD1": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2/EIP"
+   }
+  },
+  "VitalStreamProdVPCPublicSubnet2NATGateway5A4EE1D6": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "VitalStreamProdVPCPublicSubnet2EIPAA5ACAD1",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet2SubnetECD6D52F"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "DependsOn": [
+    "VitalStreamProdVPCPublicSubnet2DefaultRouteA91D4771",
+    "VitalStreamProdVPCPublicSubnet2RouteTableAssociation21FF9980"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/PublicSubnet2/NATGateway"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet1Subnet886556E4": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.50.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "App"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet1/Subnet"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet1RouteTable705ACAC8": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet1RouteTableAssociationE86553AB": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCAppSubnet1RouteTable705ACAC8"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCAppSubnet1Subnet886556E4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet1DefaultRoute6ED5981D": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet1NATGateway4BCAD46F"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCAppSubnet1RouteTable705ACAC8"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet1/DefaultRoute"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet2SubnetC1EDAB3A": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.50.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "App"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet2/Subnet"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet2RouteTable770AE6CD": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet2RouteTableAssociation26C7F6CA": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCAppSubnet2RouteTable770AE6CD"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCAppSubnet2SubnetC1EDAB3A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamProdVPCAppSubnet2DefaultRoute6E8AA395": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VitalStreamProdVPCPublicSubnet2NATGateway5A4EE1D6"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCAppSubnet2RouteTable770AE6CD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/AppSubnet2/DefaultRoute"
+   }
+  },
+  "VitalStreamProdVPCIsoPHISubnet1SubnetBE166104": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.50.4.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Iso-PHI"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet1/Subnet"
+   }
+  },
+  "VitalStreamProdVPCIsoPHISubnet1RouteTableC8DC826C": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet1/RouteTable"
+   }
+  },
+  "VitalStreamProdVPCIsoPHISubnet1RouteTableAssociation764C13B7": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCIsoPHISubnet1RouteTableC8DC826C"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCIsoPHISubnet1SubnetBE166104"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamProdVPCIsoPHISubnet2Subnet94835689": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.50.5.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Iso-PHI"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet2/Subnet"
+   }
+  },
+  "VitalStreamProdVPCIsoPHISubnet2RouteTable0B03B158": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet2/RouteTable"
+   }
+  },
+  "VitalStreamProdVPCIsoPHISubnet2RouteTableAssociationC7924734": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamProdVPCIsoPHISubnet2RouteTable0B03B158"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamProdVPCIsoPHISubnet2Subnet94835689"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/Iso-PHISubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamProdVPCIGW37AC97B7": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/IGW"
+   }
+  },
+  "VitalStreamProdVPCVPCGW4BF19ADA": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "VitalStreamProdVPCIGW37AC97B7"
+    },
+    "VpcId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/VPCGW"
+   }
+  },
+  "VitalStreamProdVPCVitalStreamFlowLogsIAMRole72CF1302": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/VitalStream-FlowLogs"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/VitalStream-FlowLogs/IAMRole/Resource"
+   }
+  },
+  "VitalStreamProdVPCVitalStreamFlowLogsIAMRoleDefaultPolicyEBA652AF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogStreams"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "VitalStreamVPCFlowLogsGroup03E8EA38",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "VitalStreamProdVPCVitalStreamFlowLogsIAMRoleDefaultPolicyEBA652AF",
+    "Roles": [
+     {
+      "Ref": "VitalStreamProdVPCVitalStreamFlowLogsIAMRole72CF1302"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/VitalStream-FlowLogs/IAMRole/DefaultPolicy/Resource"
+   }
+  },
+  "VitalStreamProdVPCVitalStreamFlowLogsFlowLog530852AE": {
+   "Type": "AWS::EC2::FlowLog",
+   "Properties": {
+    "DeliverLogsPermissionArn": {
+     "Fn::GetAtt": [
+      "VitalStreamProdVPCVitalStreamFlowLogsIAMRole72CF1302",
+      "Arn"
+     ]
+    },
+    "LogDestinationType": "cloud-watch-logs",
+    "LogGroupName": {
+     "Ref": "VitalStreamVPCFlowLogsGroup03E8EA38"
+    },
+    "ResourceId": {
+     "Ref": "VitalStreamProdVPC33A35CF9"
+    },
+    "ResourceType": "VPC",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "Production"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/VitalStream-FlowLogs"
+     },
+     {
+      "Key": "Owner",
+      "Value": "Robert-Chich"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Medical-Cloud"
+     }
+    ],
+    "TrafficType": "ALL"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-Prod-VPC/VitalStream-FlowLogs/FlowLog"
+   }
+  },
+  "VitalStreamVPCFlowLogsGroup03E8EA38": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "RetentionInDays": 7
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/VitalStream-VPC-FlowLogs-Group/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WO0W7CMAxFv4X3NNvK+ACENoSEICoTr5ObeSUjjavEWYWi/vuUltGne3x9feVSlq8r+byAPhT661pYU8t0YtBXAX34TKhLmc6dFptvd1YboWJtjT7F2iFnb6aKIuMH1BZnf/bWIZA2wIbcI5zhbaeyHIC3wNjDTShvfoFxLt45Ru/wEZg+uU9rZtCXFh2Ld0v9npq8v+MgDLQyVTT9NKoia/RYMtEgLDVBpj01W0+xy5t/HgZRYaDo9Xh/jNxFHoS68YXc01K+LOVq8ROMKXx0bFqU1aR/EFm5J1YBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-CAB01-VPC/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "VpcId": {
+   "Description": "The ID of the VitalStream Production VPC",
+   "Value": {
+    "Ref": "VitalStreamProdVPC33A35CF9"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

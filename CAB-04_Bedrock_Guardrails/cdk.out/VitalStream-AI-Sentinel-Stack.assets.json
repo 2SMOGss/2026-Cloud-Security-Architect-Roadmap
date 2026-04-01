@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "727e7daeb07c04fe64aa87865ca88b12749fae1bfc3ce8d0d1e7c0345140c7f7": {
+      "displayName": "VitalStream-AI-Sentinel-Stack Template",
+      "source": {
+        "path": "VitalStream-AI-Sentinel-Stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "570435244246-us-east-2-9d1bad47": {
+          "bucketName": "cdk-hnb659fds-assets-570435244246-us-east-2",
+          "objectKey": "727e7daeb07c04fe64aa87865ca88b12749fae1bfc3ce8d0d1e7c0345140c7f7.json",
+          "region": "us-east-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::570435244246:role/cdk-hnb659fds-file-publishing-role-570435244246-us-east-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

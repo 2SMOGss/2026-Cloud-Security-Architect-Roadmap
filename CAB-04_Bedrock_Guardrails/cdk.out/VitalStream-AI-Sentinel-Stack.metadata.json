@@ -1,0 +1,68 @@
+{
+  "/VitalStream-AI-Sentinel-Stack/VitalStream-PHI-Guardrail": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamPHIGuardrail"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/VitalStream-Guardrail-Version": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamGuardrailVersion"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/GuardrailName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GuardrailName"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/GuardrailId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GuardrailId"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/GuardrailVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GuardrailVersion"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/VitalStream-AI-Invoker/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamAIInvoker3201D6C0"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/Bedrock-Endpoint-SG/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BedrockEndpointSG621FB2C9"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/Bedrock-VPC-Endpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BedrockVPCEndpointBAA74AD0"
+    }
+  ],
+  "/VitalStream-AI-Sentinel-Stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ]
+}

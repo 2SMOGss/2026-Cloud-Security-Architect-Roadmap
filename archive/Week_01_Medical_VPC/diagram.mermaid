@@ -1,0 +1,37 @@
+graph TD
+    %% Styling
+    classDef default fill:#37474f,stroke:#cfd8dc,stroke-width:1px,color:#fff;
+    classDef public fill:#004d40,stroke:#80cbc4,stroke-width:2px,color:#fff;
+    classDef private fill:#0d47a1,stroke:#90caf9,stroke-width:2px,color:#fff;
+    classDef secure fill:#b71c1c,stroke:#ef9a9a,stroke-width:2px,color:#fff;
+
+    subgraph VPC ["Medical VPC (10.0.0.0/16)"]
+        direction TB
+        
+        subgraph PublicLayer ["Public Tier (Edge)"]
+            IGW(Internet Gateway)
+            NAT(NAT Gateway)
+            LB(Load Balancer)
+        end
+        
+        subgraph PrivateLayer ["Private App Tier"]
+            App1(App Server A)
+            App2(App Server B)
+        end
+        
+        subgraph SecureLayer ["PHI Isolated Tier"]
+            DB1(Patient DB Primary)
+            DB2(Patient DB Replica)
+        end
+        
+        IGW --> LB
+        IGW --> NAT
+        LB --> App1 & App2
+        NAT --> App1 & App2
+        App1 & App2 --> DB1
+    end
+    
+    %% Apply Styles
+    class IGW,NAT,LB public;
+    class App1,App2 private;
+    class DB1,DB2 secure;

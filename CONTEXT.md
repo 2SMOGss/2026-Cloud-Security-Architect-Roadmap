@@ -45,7 +45,7 @@
 *   **Organization:** If `learning_teach/` becomes cluttered, refactor into subfolders (e.g., `learning_teach/Week_1/`).
 *   **Content Goal:** Create content suitable for "Building in Public" (X/Twitter posts).
 
-POLICY: Manual Terminal Execution (MTE)
+POLICY: Manual Terminal Execution (MTE - Git Bash Preference)
 Scope: All terminal commands, AWS CLI operations, and Bash script executions.
 Constraint: The AI is strictly prohibited from executing commands or assuming a command was successful without user-provided output.
 Action: > 1. All commands must be presented in a bash or python code block.
