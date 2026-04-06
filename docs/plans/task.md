@@ -1,9 +1,12 @@
-# Task Progress: Sentinel Video Archivist
-
-| Task | Status | Output/Notes |
-| :--- | :--- | :--- |
-| Task 1: Skill Initialization | ✅ completed | Skill structure created in .agent/skills/ |
-| Task 2: Implement MARP Script Parser (TDD) | ✅ completed | Regex-based extraction of <!-- voiceover --> comments passes all tests. |
-| Task 3: Integrate Edge-TTS Synthesis | ✅ completed | Synthesis engine verified using 'en-US-ChristopherNeural'. |
-| Task 4: Implement High-Fidelity Rendering | ✅ completed | Rendered slides via marp-cli with 2smogss branding. |
-| Task 5: Final Orchestration & FFmpeg Assembly | ✅ completed | Concatenated high-fidelity segments to 'Progress_Report_Week_06.mp4'. |
+| Task ID | Description | Status |
+|---|---|---|
+| T1 | Create the MARP Framework & Big Picture slide | DONE |
+| T2 | Create the Inbound Journey (IGW, NACL, SG) slides | DONE |
+| T3 | Create the Outbound Egress & Summary slides | DONE |
+| T4 | Update roadmap-v3.2.md to embed review checkpoints | DONE |
+| CAB05-1 | Deploy CAB-05 Infrastructure Stack (VPC) | in_progress |
+| CAB05-2 | Deploy Multi-AZ RDS Data Tier | in_progress |
+| CAB05-3 | Implement ALB + ASG Compute Tier | in_progress |
+| CAB05-4 | Create Flask Portal & IAM RBAC | PENDING |
+| CAB05-5 | Final Verification & "Chaos Audit" | PENDING |
+| CAB05-6 | Real-Time Financial Guardrails | PENDING |
