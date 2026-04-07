@@ -1,0 +1,1108 @@
+{
+ "Resources": {
+  "VitalStreamHAVPCC7545760": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/Resource"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet1SubnetB990EE8D": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/Subnet"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet1RouteTableDA6952AA": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet1RouteTableAssociationC692A30C": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet1RouteTableDA6952AA"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet1SubnetB990EE8D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet1DefaultRoute22B2DFF7": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VitalStreamHAVPCIGW098A8E4D"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet1RouteTableDA6952AA"
+    }
+   },
+   "DependsOn": [
+    "VitalStreamHAVPCVPCGW331D9CF4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet1EIPB788EB40": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/EIP"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet1NATGateway75294347": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "VitalStreamHAVPCPublicSubnet1EIPB788EB40",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet1SubnetB990EE8D"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ]
+   },
+   "DependsOn": [
+    "VitalStreamHAVPCPublicSubnet1DefaultRoute22B2DFF7",
+    "VitalStreamHAVPCPublicSubnet1RouteTableAssociationC692A30C"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/NATGateway"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet2Subnet7F60528D": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/Subnet"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet2RouteTable6037BB35": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet2RouteTableAssociationC88C82E4": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet2RouteTable6037BB35"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet2Subnet7F60528D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet2DefaultRoute96100923": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VitalStreamHAVPCIGW098A8E4D"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet2RouteTable6037BB35"
+    }
+   },
+   "DependsOn": [
+    "VitalStreamHAVPCVPCGW331D9CF4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet2EIP92FE8149": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/EIP"
+   }
+  },
+  "VitalStreamHAVPCPublicSubnet2NATGateway88B125F2": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "VitalStreamHAVPCPublicSubnet2EIP92FE8149",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet2Subnet7F60528D"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ]
+   },
+   "DependsOn": [
+    "VitalStreamHAVPCPublicSubnet2DefaultRoute96100923",
+    "VitalStreamHAVPCPublicSubnet2RouteTableAssociationC88C82E4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/NATGateway"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet1SubnetD6A665CB": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "App"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/Subnet"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet1RouteTableD370D7AD": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet1RouteTableAssociation6A9D9D66": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCAppSubnet1RouteTableD370D7AD"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCAppSubnet1SubnetD6A665CB"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet1DefaultRouteBD10920A": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet1NATGateway75294347"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCAppSubnet1RouteTableD370D7AD"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/DefaultRoute"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet2Subnet16CE31E0": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "App"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/Subnet"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet2RouteTable54D5ED8D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet2RouteTableAssociation02937459": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCAppSubnet2RouteTable54D5ED8D"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCAppSubnet2Subnet16CE31E0"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamHAVPCAppSubnet2DefaultRoute3F2FFB7B": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VitalStreamHAVPCPublicSubnet2NATGateway88B125F2"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCAppSubnet2RouteTable54D5ED8D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/DefaultRoute"
+   }
+  },
+  "VitalStreamHAVPCDataSubnet1Subnet502EE19E": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.4.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Data"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1/Subnet"
+   }
+  },
+  "VitalStreamHAVPCDataSubnet1RouteTable63F755F2": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamHAVPCDataSubnet1RouteTableAssociation31895B9C": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCDataSubnet1RouteTable63F755F2"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCDataSubnet1Subnet502EE19E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamHAVPCDataSubnet2Subnet7655F351": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.5.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Data"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2/Subnet"
+   }
+  },
+  "VitalStreamHAVPCDataSubnet2RouteTable3F5B0E8B": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamHAVPCDataSubnet2RouteTableAssociation58EC1AC7": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamHAVPCDataSubnet2RouteTable3F5B0E8B"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamHAVPCDataSubnet2Subnet7655F351"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamHAVPCIGW098A8E4D": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC"
+     },
+     {
+      "Key": "Phase",
+      "Value": "CAB-05"
+     },
+     {
+      "Key": "Project",
+      "Value": "VitalStream-Resilience"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/IGW"
+   }
+  },
+  "VitalStreamHAVPCVPCGW331D9CF4": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "VitalStreamHAVPCIGW098A8E4D"
+    },
+    "VpcId": {
+     "Ref": "VitalStreamHAVPCC7545760"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/VPCGW"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WOQQqDMBREz+I+plXbA4iU4qYELW7LN/3FVE1K8lMR8e5FLLqamccwTMzj05kfAxhcKJ9t2KmaTyWBbBkM7oEy5lP1kSx76UpkTPi6U7L0tUZa2O4K4wnvUHe4852lzhmpgJTRW3kxl1wscgO6AuEAIxNWfYFwH841odW4FdYn/5QSgWx61DSzAp3xVuLMxEiN0YeERwmP4uDtlAqt16R65MWqP55+bGn4AAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-VPC-Stack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Outputs": {
+  "ExportsOutputRefVitalStreamHAVPCDataSubnet1Subnet502EE19E0985925E": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCDataSubnet1Subnet502EE19E"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCDataSubnet1Subnet502EE19E0985925E"
+   }
+  },
+  "ExportsOutputRefVitalStreamHAVPCDataSubnet2Subnet7655F3511DBB6BFA": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCDataSubnet2Subnet7655F351"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCDataSubnet2Subnet7655F3511DBB6BFA"
+   }
+  },
+  "ExportsOutputRefVitalStreamHAVPCC7545760F34B2220": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCC7545760"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCC7545760F34B2220"
+   }
+  },
+  "ExportsOutputRefVitalStreamHAVPCPublicSubnet1SubnetB990EE8DC13EA310": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCPublicSubnet1SubnetB990EE8D"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCPublicSubnet1SubnetB990EE8DC13EA310"
+   }
+  },
+  "ExportsOutputRefVitalStreamHAVPCPublicSubnet2Subnet7F60528DEC830822": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCPublicSubnet2Subnet7F60528D"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCPublicSubnet2Subnet7F60528DEC830822"
+   }
+  },
+  "ExportsOutputRefVitalStreamHAVPCAppSubnet1SubnetD6A665CB98EB2171": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCAppSubnet1SubnetD6A665CB"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCAppSubnet1SubnetD6A665CB98EB2171"
+   }
+  },
+  "ExportsOutputRefVitalStreamHAVPCAppSubnet2Subnet16CE31E0168C66A0": {
+   "Value": {
+    "Ref": "VitalStreamHAVPCAppSubnet2Subnet16CE31E0"
+   },
+   "Export": {
+    "Name": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCAppSubnet2Subnet16CE31E0168C66A0"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

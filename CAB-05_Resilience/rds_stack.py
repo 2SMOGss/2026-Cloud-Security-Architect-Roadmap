@@ -21,3 +21,8 @@ class VitalStreamRdsStack(Stack):
         
         Tags.of(self.db).add("Tier", "Data")
         Tags.of(self.db).add("Availability", "Multi-AZ")
+
+        # Allow ingress from App Subnets (breaks cycle with ComputeStack)
+        app_subnets = vpc.select_subnets(subnet_group_name="App")
+        for subnet in app_subnets.subnets:
+            self.db.connections.allow_default_port_from(ec2.Peer.ipv4(subnet.ipv4_cidr_block))

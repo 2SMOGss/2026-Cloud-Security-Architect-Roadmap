@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "533478350ff4d6bbd909df3c66103f1f27505436aa9de02efca89a177596d1a1": {
+      "displayName": "VitalStream-HA-Monitoring-Stack Template",
+      "source": {
+        "path": "VitalStream-HA-Monitoring-Stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1-92940c3a": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "533478350ff4d6bbd909df3c66103f1f27505436aa9de02efca89a177596d1a1.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

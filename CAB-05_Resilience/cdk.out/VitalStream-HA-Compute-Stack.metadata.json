@@ -1,0 +1,104 @@
+{
+  "/VitalStream-HA-Compute-Stack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--al2023-ami-kernel-6.1-x86_64:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SsmParameterValueawsserviceamiamazonlinuxlatestal2023amikernel61x8664C96584B6F00A464EAD1953AFF4B05118Parameter"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStreamAppRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamAppRoleF966E755"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-ALB/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALB467AA7FA"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/App-SG/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AppSG43CFB37D"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/App-SG/from VitalStreamHAComputeStackVitalStreamALBSecurityGroupA9D8891C:80": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AppSGfromVitalStreamHAComputeStackVitalStreamALBSecurityGroupA9D8891C8088404DFD"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-LT/Profile": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamLTProfile95E7D976"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-LT/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamLT61BDB091"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-ASG/ASG": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamASG241AABA4"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStreamAppRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamAppRoleDefaultPolicy34ABD4D9"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-ALB/SecurityGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBSecurityGroup56DCE301"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-ALB/SecurityGroup/to VitalStreamHAComputeStackAppSG96620045:80": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBSecurityGrouptoVitalStreamHAComputeStackAppSG9662004580875D0DED"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-ALB/PublicListener/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBPublicListenerA10E56CD"
+    }
+  ],
+  "/VitalStream-HA-Compute-Stack/VitalStream-ALB/PublicListener/AppTargetGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBPublicListenerAppTargetGroup5AB2EB15"
+    }
+  ]
+}

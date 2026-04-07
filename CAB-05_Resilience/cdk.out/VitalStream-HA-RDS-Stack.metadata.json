@@ -1,0 +1,86 @@
+{
+  "/VitalStream-HA-RDS-Stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDB8EAEA0AF"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/Exports/Output{\"Ref\":\"VitalStreamDBSecretAttachmentF06FC9B2\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamDBSecretAttachmentF06FC9B29E9BE922"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/Exports/Output{\"Ref\":\"VitalStreamDBSecret72D22D44\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamDBSecret72D22D44B1E3411F"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/Exports/Output{\"Fn::GetAtt\":[\"VitalStreamDB8EAEA0AF\",\"Endpoint.Address\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttVitalStreamDB8EAEA0AFEndpointAddressC482E39D"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/SubnetGroup/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSubnetGroup7DB7649B"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/SecurityGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecurityGroup666ECA68"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/SecurityGroup/from 10.0.2.0_24:{IndirectPort}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecurityGroupfrom1002024IndirectPort937A6E79"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/SecurityGroup/from 10.0.3.0_24:{IndirectPort}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecurityGroupfrom1003024IndirectPort2E6DEB79"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/Secret/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecret72D22D44"
+    }
+  ],
+  "/VitalStream-HA-RDS-Stack/VitalStream-DB/Secret/Attachment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecretAttachmentF06FC9B2"
+    }
+  ]
+}

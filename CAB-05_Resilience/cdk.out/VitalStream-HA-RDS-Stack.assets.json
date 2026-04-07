@@ -1,0 +1,20 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "b7f39fb05bc307630751bab81c6ae4a72b8be90784d5777d57507bbf75949e06": {
+      "displayName": "VitalStream-HA-RDS-Stack Template",
+      "source": {
+        "path": "VitalStream-HA-RDS-Stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-2ec9bc6c": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "b7f39fb05bc307630751bab81c6ae4a72b8be90784d5777d57507bbf75949e06.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -1,0 +1,37 @@
+{
+  "/VitalStream-HA-Monitoring-Stack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Monitoring",
+          "value": "Financial"
+        }
+      ]
+    }
+  ],
+  "/VitalStream-HA-Monitoring-Stack/VitalStream-BillingAlarm": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamBillingAlarm"
+    }
+  ],
+  "/VitalStream-HA-Monitoring-Stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-Monitoring-Stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-Monitoring-Stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ]
+}

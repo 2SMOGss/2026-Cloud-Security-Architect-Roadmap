@@ -1,0 +1,20 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "f983a5f19779e99f4ab18cfd0ca4770f3b62f01ccdb16d4408f7de1824389c08": {
+      "displayName": "VitalStream-HA-Compute-Stack Template",
+      "source": {
+        "path": "VitalStream-HA-Compute-Stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-df34f69b": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "f983a5f19779e99f4ab18cfd0ca4770f3b62f01ccdb16d4408f7de1824389c08.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

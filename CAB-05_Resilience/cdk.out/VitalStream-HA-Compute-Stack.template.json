@@ -1,0 +1,758 @@
+{
+ "Resources": {
+  "VitalStreamAppRoleF966E755": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStreamAppRole/Resource"
+   }
+  },
+  "VitalStreamAppRoleDefaultPolicy34ABD4D9": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "VitalStream-HA-RDS-Stack:ExportsOutputRefVitalStreamDBSecretAttachmentF06FC9B29E9BE922"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "VitalStreamAppRoleDefaultPolicy34ABD4D9",
+    "Roles": [
+     {
+      "Ref": "VitalStreamAppRoleF966E755"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStreamAppRole/DefaultPolicy/Resource"
+   }
+  },
+  "VitalStreamALB467AA7FA": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Scheme": "internet-facing",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "VitalStreamALBSecurityGroup56DCE301",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCPublicSubnet1SubnetB990EE8DC13EA310"
+     },
+     {
+      "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCPublicSubnet2Subnet7F60528DEC830822"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Tier",
+      "Value": "Web"
+     }
+    ],
+    "Type": "application"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-ALB/Resource"
+   }
+  },
+  "VitalStreamALBSecurityGroup56DCE301": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Automatically created Security Group for ELB VitalStreamHAComputeStackVitalStreamALB6AD88314",
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow from anyone on port 80",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Tier",
+      "Value": "Web"
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCC7545760F34B2220"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-ALB/SecurityGroup/Resource"
+   }
+  },
+  "VitalStreamALBSecurityGrouptoVitalStreamHAComputeStackAppSG9662004580875D0DED": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "DestinationSecurityGroupId": {
+     "Fn::GetAtt": [
+      "AppSG43CFB37D",
+      "GroupId"
+     ]
+    },
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "VitalStreamALBSecurityGroup56DCE301",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-ALB/SecurityGroup/to VitalStreamHAComputeStackAppSG96620045:80"
+   }
+  },
+  "VitalStreamALBPublicListenerA10E56CD": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "VitalStreamALBPublicListenerAppTargetGroup5AB2EB15"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "VitalStreamALB467AA7FA"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-ALB/PublicListener/Resource"
+   }
+  },
+  "VitalStreamALBPublicListenerAppTargetGroup5AB2EB15": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "HealthCheckIntervalSeconds": 30,
+    "HealthCheckPath": "/health",
+    "Port": 80,
+    "Protocol": "HTTP",
+    "Tags": [
+     {
+      "Key": "Tier",
+      "Value": "Web"
+     }
+    ],
+    "TargetGroupAttributes": [
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "instance",
+    "VpcId": {
+     "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCC7545760F34B2220"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-ALB/PublicListener/AppTargetGroup/Resource"
+   }
+  },
+  "AppSG43CFB37D": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security group for VitalStream App instances",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCC7545760F34B2220"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/App-SG/Resource"
+   }
+  },
+  "AppSGfromVitalStreamHAComputeStackVitalStreamALBSecurityGroupA9D8891C8088404DFD": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "Load balancer to target",
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "AppSG43CFB37D",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "VitalStreamALBSecurityGroup56DCE301",
+      "GroupId"
+     ]
+    },
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/App-SG/from VitalStreamHAComputeStackVitalStreamALBSecurityGroupA9D8891C:80"
+   }
+  },
+  "VitalStreamLTProfile95E7D976": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "VitalStreamAppRoleF966E755"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-LT/Profile"
+   }
+  },
+  "VitalStreamLT61BDB091": {
+   "Type": "AWS::EC2::LaunchTemplate",
+   "Properties": {
+    "LaunchTemplateData": {
+     "IamInstanceProfile": {
+      "Arn": {
+       "Fn::GetAtt": [
+        "VitalStreamLTProfile95E7D976",
+        "Arn"
+       ]
+      }
+     },
+     "ImageId": {
+      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestal2023amikernel61x8664C96584B6F00A464EAD1953AFF4B05118Parameter"
+     },
+     "InstanceType": "t3.micro",
+     "SecurityGroupIds": [
+      {
+       "Fn::GetAtt": [
+        "AppSG43CFB37D",
+        "GroupId"
+       ]
+      }
+     ],
+     "TagSpecifications": [
+      {
+       "ResourceType": "instance",
+       "Tags": [
+        {
+         "Key": "Name",
+         "Value": "VitalStream-HA-Compute-Stack/VitalStream-LT"
+        }
+       ]
+      },
+      {
+       "ResourceType": "volume",
+       "Tags": [
+        {
+         "Key": "Name",
+         "Value": "VitalStream-HA-Compute-Stack/VitalStream-LT"
+        }
+       ]
+      }
+     ],
+     "UserData": {
+      "Fn::Base64": {
+       "Fn::Join": [
+        "",
+        [
+         "#!/bin/bash\nyum update -y\nyum install -y python3-pip\npip3 install flask psycopg2-binary boto3\ncat <<EOF > /home/ec2-user/app.py\nfrom flask import Flask, jsonify, render_template_string\nimport psycopg2, boto3, json, os, requests\napp = Flask(__name__)\ndef get_db_credentials():\n    client = boto3.client('secretsmanager', region_name='",
+         {
+          "Ref": "AWS::Region"
+         },
+         "')\n    response = client.get_secret_value(SecretId='",
+         {
+          "Fn::Join": [
+           "-",
+           [
+            {
+             "Fn::Select": [
+              0,
+              {
+               "Fn::Split": [
+                "-",
+                {
+                 "Fn::Select": [
+                  6,
+                  {
+                   "Fn::Split": [
+                    ":",
+                    {
+                     "Fn::ImportValue": "VitalStream-HA-RDS-Stack:ExportsOutputRefVitalStreamDBSecret72D22D44B1E3411F"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "Fn::Select": [
+              1,
+              {
+               "Fn::Split": [
+                "-",
+                {
+                 "Fn::Select": [
+                  6,
+                  {
+                   "Fn::Split": [
+                    ":",
+                    {
+                     "Fn::ImportValue": "VitalStream-HA-RDS-Stack:ExportsOutputRefVitalStreamDBSecret72D22D44B1E3411F"
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          ]
+         },
+         "')\n    return json.loads(response['SecretString'])\n@app.route('/health')\ndef health(): return jsonify(status='healthy', node='CAB-05')\n@app.route('/')\ndef index():\n    try:\n        creds = get_db_credentials()\n        conn = psycopg2.connect(host='",
+         {
+          "Fn::ImportValue": "VitalStream-HA-RDS-Stack:ExportsOutputFnGetAttVitalStreamDB8EAEA0AFEndpointAddressC482E39D"
+         },
+         "', database=creds['dbname'], user=creds['username'], password=creds['password'], port=creds['port'])\n        cur = conn.cursor(); cur.execute('SELECT version();'); ver = cur.fetchone(); cur.close(); conn.close()\n        node_id = requests.get('http://169.254.169.254/latest/meta-data/instance-id').text\n        db_msg = 'RDS Multi-AZ Connected: ' + ver[0]\n        bg_color = '#0f172a'\n        status_color = '#10b981'\n        html = f'''\n        <!DOCTYPE html>\n        <html>\n        <head>\n            <title>VitalStream Resilience Portal</title>\n            <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap'>\n            <style>\n                body {{ background: {bg_color}; color: white; font-family: \"Outfit\", sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }}\n                .card {{ background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); width: 450px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }}\n                .badge {{ background: {status_color}; color: {bg_color}; padding: 6px 12px; border-radius: 12px; font-weight: 600; font-size: 0.8rem; margin-bottom: 20px; display: inline-block; }}\n                h1 {{ font-weight: 600; margin: 0 0 10px 0; font-size: 2rem; }}\n                p {{ color: rgba(255,255,255,0.6); margin-bottom: 30px; font-weight: 300; line-height: 1.5; }}\n                .info-row {{ display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }}\n                .label {{ color: rgba(255,255,255,0.4); }}\n                .glow {{ position: absolute; width: 300px; height: 300px; background: {status_color}; opacity: 0.1; filter: blur(120px); top: -100px; left: -100px; z-index: -1; }}\n            </style>\n        </head>\n        <body>\n            <div class='card'>\n                <div class='glow'></div>\n                <div class='badge'>RESILIENCE ACTIVE</div>\n                <h1>VitalStream</h1>\n                <p>Cloud Security Architect Resilience Portal - CAB-05 Live Infrastructure</p>\n                <div class='info-row'><span class='label'>Database Status</span><span style='color:{status_color}'>ONLINE</span></div>\n                <div class='info-row'><span class='label'>Active Node ID</span><span>{node_id}</span></div>\n                <div class='info-row'><span class='label'>Region</span><span>{os.environ.get('AWS_REGION', 'us-east-1')}</span></div>\n                <div class='info-row'><span class='label'>DB Version</span><span style='font-size:0.7rem'>{ver[0][:30]}...</span></div>\n            </div>\n        </body>\n        </html>\n        '''\n        return html\n    except Exception as e: return jsonify(status='error', error=str(e)), 500\nif __name__ == '__main__': app.run(host='0.0.0.0', port=80)\nEOF\npython3 /home/ec2-user/app.py &"
+        ]
+       ]
+      }
+     }
+    },
+    "TagSpecifications": [
+     {
+      "ResourceType": "launch-template",
+      "Tags": [
+       {
+        "Key": "Name",
+        "Value": "VitalStream-HA-Compute-Stack/VitalStream-LT"
+       }
+      ]
+     }
+    ]
+   },
+   "DependsOn": [
+    "VitalStreamAppRoleDefaultPolicy34ABD4D9",
+    "VitalStreamAppRoleF966E755"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-LT/Resource"
+   }
+  },
+  "VitalStreamASG241AABA4": {
+   "Type": "AWS::AutoScaling::AutoScalingGroup",
+   "Properties": {
+    "LaunchTemplate": {
+     "LaunchTemplateId": {
+      "Ref": "VitalStreamLT61BDB091"
+     },
+     "Version": {
+      "Fn::GetAtt": [
+       "VitalStreamLT61BDB091",
+       "LatestVersionNumber"
+      ]
+     }
+    },
+    "MaxSize": "4",
+    "MinSize": "2",
+    "Tags": [
+     {
+      "Key": "Tier",
+      "PropagateAtLaunch": true,
+      "Value": "App"
+     }
+    ],
+    "TargetGroupARNs": [
+     {
+      "Ref": "VitalStreamALBPublicListenerAppTargetGroup5AB2EB15"
+     }
+    ],
+    "VPCZoneIdentifier": [
+     {
+      "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCAppSubnet1SubnetD6A665CB98EB2171"
+     },
+     {
+      "Fn::ImportValue": "VitalStream-HA-VPC-Stack:ExportsOutputRefVitalStreamHAVPCAppSubnet2Subnet16CE31E0168C66A0"
+     }
+    ]
+   },
+   "UpdatePolicy": {
+    "AutoScalingScheduledAction": {
+     "IgnoreUnmodifiedGroupSizeProperties": true
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/VitalStream-ASG/ASG"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/32Q0U7DMAxFv2XvaWAdfMBACE3aQ9XuHXmp15mlTpU4TFXUf0ftYHQg8XR9j69s6eY6f3jU9ws4h8zUp8zSXqdKwJwUnMNbImh1Kp1F9XzgSQtnyfSj/Zk2HATYYOHdgSwOCi0EIWMd1HuwwIa4+ch1WnedJQNCjrcO6qdph368cePnOQqC/JX5nmf7HfgG5dW72I2RmR0UmlynCk30JP018j94aTyG8Adv+MK3ENkcd9h2FmRq5ZYMCqK4YMASNzqto7jqYq7vfrNhmNoEDy0KelVicNEbHFTRy9Hx3UovV3qZL94DUeYjC7Woy4t+AjBU/IfBAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Compute-Stack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Parameters": {
+  "SsmParameterValueawsserviceamiamazonlinuxlatestal2023amikernel61x8664C96584B6F00A464EAD1953AFF4B05118Parameter": {
+   "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+   "Default": "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64"
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

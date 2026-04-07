@@ -1,0 +1,76 @@
+{
+ "Resources": {
+  "VitalStreamBillingAlarm": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alarm when estimated charges exceed $10",
+    "AlarmName": "VitalStream-CAB05-BillingAlarm",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "Currency",
+      "Value": "USD"
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "EstimatedCharges",
+    "Namespace": "AWS/Billing",
+    "Period": 21600,
+    "Statistic": "Maximum",
+    "Tags": [
+     {
+      "Key": "Monitoring",
+      "Value": "Financial"
+     }
+    ],
+    "Threshold": 10
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Monitoring-Stack/VitalStream-BillingAlarm"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIx1TNQTCwv1k1OydbNyUzSqw4uSUzO1kksL45PzskvTSlPLEnO0HNOy3PMSSzKrdUJqCzJyM/TN9YzNNYzNFLMKs7M1C0qzSvJzE3VC4LQALKRVPNXAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-HA-Monitoring-Stack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,242 @@
+{
+  "/VitalStream-HA-VPC-Stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCC7545760"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCIGW098A8E4D"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCVPCGW331D9CF4"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCDataSubnet1Subnet502EE19E\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCDataSubnet1Subnet502EE19E0985925E"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCDataSubnet2Subnet7655F351\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCDataSubnet2Subnet7655F3511DBB6BFA"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCC7545760\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCC7545760F34B2220"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCPublicSubnet1SubnetB990EE8D\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCPublicSubnet1SubnetB990EE8DC13EA310"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCPublicSubnet2Subnet7F60528D\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCPublicSubnet2Subnet7F60528DEC830822"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCAppSubnet1SubnetD6A665CB\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCAppSubnet1SubnetD6A665CB98EB2171"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/Exports/Output{\"Ref\":\"VitalStreamHAVPCAppSubnet2Subnet16CE31E0\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamHAVPCAppSubnet2Subnet16CE31E0168C66A0"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet1SubnetB990EE8D"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet1RouteTableDA6952AA"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet1RouteTableAssociationC692A30C"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet1DefaultRoute22B2DFF7"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet1EIPB788EB40"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet1NATGateway75294347"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet2Subnet7F60528D"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet2RouteTable6037BB35"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet2RouteTableAssociationC88C82E4"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet2DefaultRoute96100923"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet2EIP92FE8149"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/PublicSubnet2/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCPublicSubnet2NATGateway88B125F2"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet1SubnetD6A665CB"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet1RouteTableD370D7AD"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet1RouteTableAssociation6A9D9D66"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet1DefaultRouteBD10920A"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet2Subnet16CE31E0"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet2RouteTable54D5ED8D"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet2RouteTableAssociation02937459"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/AppSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCAppSubnet2DefaultRoute3F2FFB7B"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCDataSubnet1Subnet502EE19E"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCDataSubnet1RouteTable63F755F2"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCDataSubnet1RouteTableAssociation31895B9C"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCDataSubnet2Subnet7655F351"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCDataSubnet2RouteTable3F5B0E8B"
+    }
+  ],
+  "/VitalStream-HA-VPC-Stack/VitalStream-HA-VPC/DataSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamHAVPCDataSubnet2RouteTableAssociation58EC1AC7"
+    }
+  ]
+}
