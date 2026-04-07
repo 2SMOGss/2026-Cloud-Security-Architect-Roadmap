@@ -41,7 +41,7 @@
       "ToPort": 443
      }
     ],
-    "VpcId": "vpc-0b8a767698259bbdc"
+    "VpcId": "vpc-033ee84c79718955e"
    },
    "Metadata": {
     "aws:cdk:path": "VitalStream-AI-Sentinel-Stack/Bedrock-Endpoint-SG/Resource"
@@ -82,11 +82,11 @@
     ],
     "ServiceName": "com.amazonaws.us-east-2.bedrock-runtime",
     "SubnetIds": [
-     "subnet-0ce79c8c03bd95927",
-     "subnet-00c2b97b6770f6cb9"
+     "subnet-0bb33b47674be407c",
+     "subnet-05523259e09dd1873"
     ],
     "VpcEndpointType": "Interface",
-    "VpcId": "vpc-0b8a767698259bbdc"
+    "VpcId": "vpc-033ee84c79718955e"
    },
    "Metadata": {
     "aws:cdk:path": "VitalStream-AI-Sentinel-Stack/Bedrock-VPC-Endpoint/Resource"

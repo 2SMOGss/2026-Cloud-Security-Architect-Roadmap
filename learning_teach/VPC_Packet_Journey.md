@@ -13,23 +13,7 @@ paginate: true
 
 # The Big Picture: Regional Boundary
 
-```mermaid
-graph TD
-  Internet((Public Internet)) --> IGW[Internet Gateway]
-  subgraph VPC [Custom Medical VPC 10.0.0.0/16]
-      IGW --> Router[Main Route Table]
-      Router --> NACL1{Public NACL}
-      NACL1 -. Stateless Pass .-> PubSub[Public Subnet 10.0.1.0/24]
-      PubSub --> NGW[NAT Gateway]
-      PubSub --> ALB[Application Load Balancer]
-      
-      Router --> NACL2{Private NACL}
-      NACL2 -. Stateless Pass .-> PrivSub[Private Subnet 10.0.2.0/24]
-      ALB --> SG1[Private Security Group]
-      SG1 -. Stateful Pass .-> App[Fargate / EC2 Backend]
-  end
-```
-
+*> The visual Mermaid flowchart has been separated into `VPC_Packet_Journey_Diagram.md`.*
 ---
 
 # The Inbound Journey: Perimeter Defense

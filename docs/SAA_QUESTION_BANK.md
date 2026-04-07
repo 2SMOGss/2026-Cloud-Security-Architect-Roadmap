@@ -25,8 +25,18 @@
 | **CAB-04** | PrivateLink | Why use an Interface Endpoint for Bedrock? | To keep AI invocation traffic within the private network, bypassing the public internet for HIPAA compliance. |
 | **CAB-04** | Guardrails | How do Bedrock Guardrails protect data at-rest and in-transit? | By redacting PII/PHI on both input prompts and output responses automatically. |
 | **CAB-04** | Zero-Trust | Can an Admin use a VPC Endpoint if the Endpoint Policy omits their role? | No. Endpoint Policies act as a perimeter gate; if a principal is not explicitly allowed (or is denied), access is blocked regardless of IAM permissions. |
+| **CAB-05** | RDS Resilience | What is the standard for synchronous failover in RDS? | **Multi-AZ Deployment**. (Read Replicas are for performance, Multi-AZ is for resilience). |
+| **CAB-05** | Launch Templates | Why migrate from Launch Configurations to Launch Templates? | Launch Configurations are being phased out (legacy); Templates support versioning, T2/T3 instances, and modern features like IMDSv2. |
+| **CAB-05** | Cyclic Dependency | How do you break a Security Group cycle between RDS and ASG? | Use **Subnet CIDR blocks** in the RDS ingress rules instead of referencing the ASG Security Group ID directly. |
+| **CAB-05** | Self-Healing | What happens if an instance fails an ALB health check in an ASG? | The ASG **terminates** the unhealthy instance and **provisions** a new one in a healthy AZ to maintain desired capacity. |
+| **CAB-05** | Secrets Manager | How to securely retrieve RDS credentials without hardcoding? | Use **AWS Secrets Manager** with an IAM Role (Instance Profile) that has `GetSecretValue` permissions. |
+| **CAB-05** | Read Performance | A Multi-AZ RDS is hitting 90% CPU on reads. Best fix? | Deploy **RDS Read Replicas** and offload the read traffic from the primary instance. |
+| **CAB-05** | Billing Alarms | Where are AWS Billing metrics stored? | Only in the **us-east-1** (N. Virginia) region. Alarms must be created there. |
+| **CAB-05** | Instance Refresh | Benefit of ASG Instance Refresh over manual termination? | Performs a **controlled rolling update**, maintaining `MinHealthyPercentage` while deploying new Launch Template versions. |
+| **CAB-05** | Private Updates | How do instances in isolated subnets download OS patches securely? | Via a **NAT Gateway** in a Public Subnet (or VPC Endpoints for specific AWS services). |
+| **CAB-05** | 502 Bad Gateway | #1 cause of ALB returning 502 with healthy EC2 instances? | **Security Group mismatch**: The EC2 SG does not allow ingress from the ALB's SG on the application port. |
 
 ---
 ## 🏁 Status Check:
-- **Questions Stored:** 16
-- **Priority Domain:** Domain 1 (Secure Architectures)
+- **Questions Stored:** 26
+- **Priority Domain:** Domain 2 (Design Resilient Architectures)

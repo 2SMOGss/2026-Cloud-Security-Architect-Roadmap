@@ -19,7 +19,7 @@ def invoke_assistant(prompt_content):
         # 2. SAA-C03 Pattern: Invoke via VPC Endpoint with Guardrails
         response = client.invoke_model(
             modelId='us.anthropic.claude-3-haiku-20240307-v1:0', # Regional Inference Profile
-            guardrailIdentifier='n4vcp7tyntkl',
+            guardrailIdentifier='ceo87h4m5u12',
             guardrailVersion='1',
             body=json.dumps({
                 "anthropic_version": "bedrock-2023-05-31",
