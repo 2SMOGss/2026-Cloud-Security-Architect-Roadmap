@@ -1,0 +1,8 @@
+{
+  "name": "sentinel-view-counter",
+  "version": "1.0.0",
+  "main": "api/views.js",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
