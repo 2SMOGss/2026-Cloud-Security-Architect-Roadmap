@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "b2bd7f980e7ffc571d0abf3bc9271f1f604cd0abbdf7c9b3c1c89ac6a888c35d": {
+      "displayName": "VitalStream-Network Template",
+      "source": {
+        "path": "VitalStream-Network.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1-88b53ddc": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "b2bd7f980e7ffc571d0abf3bc9271f1f604cd0abbdf7c9b3c1c89ac6a888c35d.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

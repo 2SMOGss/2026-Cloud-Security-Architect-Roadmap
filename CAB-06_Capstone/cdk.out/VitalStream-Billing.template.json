@@ -1,0 +1,113 @@
+{
+ "Resources": {
+  "BudgetAlertTopicF20DF526": {
+   "Type": "AWS::SNS::Topic",
+   "Properties": {
+    "DisplayName": "VitalStream Budget Alerts"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Billing/BudgetAlertTopic/Resource"
+   }
+  },
+  "MonthlyBudget": {
+   "Type": "AWS::Budgets::Budget",
+   "Properties": {
+    "Budget": {
+     "BudgetLimit": {
+      "Amount": 30,
+      "Unit": "USD"
+     },
+     "BudgetName": "VitalStream-Budget",
+     "BudgetType": "COST",
+     "TimeUnit": "MONTHLY"
+    },
+    "NotificationsWithSubscribers": [
+     {
+      "Notification": {
+       "ComparisonOperator": "GREATER_THAN",
+       "NotificationType": "ACTUAL",
+       "Threshold": 80,
+       "ThresholdType": "PERCENTAGE"
+      },
+      "Subscribers": [
+       {
+        "Address": {
+         "Ref": "BudgetAlertTopicF20DF526"
+        },
+        "SubscriptionType": "SNS"
+       }
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Billing/MonthlyBudget"
+   }
+  },
+  "BillingAlarmLowThreshold727AB8B3": {
+   "Type": "AWS::CloudWatch::Alarm",
+   "Properties": {
+    "AlarmDescription": "Alert when charges exceed $1",
+    "ComparisonOperator": "GreaterThanThreshold",
+    "Dimensions": [
+     {
+      "Name": "Currency",
+      "Value": "USD"
+     }
+    ],
+    "EvaluationPeriods": 1,
+    "MetricName": "EstimatedCharges",
+    "Namespace": "AWS/Billing",
+    "Period": 300,
+    "Statistic": "Average",
+    "Threshold": 1
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Billing/BillingAlarmLowThreshold/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/yXKQQ7CIBBA0bN0D6OlegDtBYy6N1No7VgKpgMhhnB3I67+W3wF6nCEfYOJpTaLtDRAvgXUi8DEj8yOId/9m7ToJ1dRxBDNcwwM/eTOlUJbH03CoGfIJ4vb+rsrSini8gmzd7sO2g5a1byYSG7RBVpHuP77BZy/nDiIAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Billing/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

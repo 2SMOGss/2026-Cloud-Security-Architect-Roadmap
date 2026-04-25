@@ -1,0 +1,303 @@
+{
+ "Resources": {
+  "VitalStreamAlbSGBCA4D67B": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Allow HTTP traffic from CloudFront",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "from 0.0.0.0/0:80",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPC23BDFA9139F5419A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamAlbSG/Resource"
+   }
+  },
+  "VitalStreamALBEC38BBB0": {
+   "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties": {
+    "LoadBalancerAttributes": [
+     {
+      "Key": "deletion_protection.enabled",
+      "Value": "false"
+     }
+    ],
+    "Scheme": "internet-facing",
+    "SecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "VitalStreamAlbSGBCA4D67B",
+       "GroupId"
+      ]
+     }
+    ],
+    "Subnets": [
+     {
+      "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPublicSubnet1Subnet683C182A2F7AEAD7"
+     },
+     {
+      "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPublicSubnet2SubnetF3332BBC6901E9F9"
+     }
+    ],
+    "Type": "application"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamALB/Resource"
+   }
+  },
+  "VitalStreamALBPublicListenerA3962121": {
+   "Type": "AWS::ElasticLoadBalancingV2::Listener",
+   "Properties": {
+    "DefaultActions": [
+     {
+      "TargetGroupArn": {
+       "Ref": "VitalStreamALBPublicListenerAppFleetGroup04A0DD14"
+      },
+      "Type": "forward"
+     }
+    ],
+    "LoadBalancerArn": {
+     "Ref": "VitalStreamALBEC38BBB0"
+    },
+    "Port": 80,
+    "Protocol": "HTTP"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamALB/PublicListener/Resource"
+   }
+  },
+  "VitalStreamALBPublicListenerAppFleetGroup04A0DD14": {
+   "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+   "Properties": {
+    "Port": 80,
+    "Protocol": "HTTP",
+    "TargetGroupAttributes": [
+     {
+      "Key": "stickiness.enabled",
+      "Value": "false"
+     }
+    ],
+    "TargetType": "instance",
+    "VpcId": {
+     "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPC23BDFA9139F5419A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamALB/PublicListener/AppFleetGroup/Resource"
+   }
+  },
+  "VitalStreamAsgSGB50A5487": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Allow traffic from ALB",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "VpcId": {
+     "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPC23BDFA9139F5419A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamAsgSG/Resource"
+   }
+  },
+  "VitalStreamAsgSGfromVitalStreamComputeVitalStreamAlbSG973EB28180F91A1659": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "Description": "from VitalStreamComputeVitalStreamAlbSG973EB281:80",
+    "FromPort": 80,
+    "GroupId": {
+     "Fn::GetAtt": [
+      "VitalStreamAsgSGB50A5487",
+      "GroupId"
+     ]
+    },
+    "IpProtocol": "tcp",
+    "SourceSecurityGroupId": {
+     "Fn::GetAtt": [
+      "VitalStreamAlbSGBCA4D67B",
+      "GroupId"
+     ]
+    },
+    "ToPort": 80
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamAsgSG/from VitalStreamComputeVitalStreamAlbSG973EB281:80"
+   }
+  },
+  "VitalStreamLaunchTemplate2314E72C": {
+   "Type": "AWS::EC2::LaunchTemplate",
+   "Properties": {
+    "LaunchTemplateData": {
+     "ImageId": {
+      "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+     },
+     "InstanceType": "t3.micro",
+     "SecurityGroupIds": [
+      {
+       "Fn::GetAtt": [
+        "VitalStreamAsgSGB50A5487",
+        "GroupId"
+       ]
+      }
+     ],
+     "TagSpecifications": [
+      {
+       "ResourceType": "instance",
+       "Tags": [
+        {
+         "Key": "Name",
+         "Value": "VitalStream-Compute/VitalStreamLaunchTemplate"
+        }
+       ]
+      },
+      {
+       "ResourceType": "volume",
+       "Tags": [
+        {
+         "Key": "Name",
+         "Value": "VitalStream-Compute/VitalStreamLaunchTemplate"
+        }
+       ]
+      }
+     ],
+     "UserData": {
+      "Fn::Base64": "#!/bin/bash\nyum update -y\nyum install -y httpd\nsystemctl start httpd\nsystemctl enable httpd\necho '<h1>VitalStream Medical Portal - SENTINEL AUDIT READY</h1>' > /var/www/html/index.html"
+     }
+    },
+    "TagSpecifications": [
+     {
+      "ResourceType": "launch-template",
+      "Tags": [
+       {
+        "Key": "Name",
+        "Value": "VitalStream-Compute/VitalStreamLaunchTemplate"
+       }
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamLaunchTemplate/Resource"
+   }
+  },
+  "VitalStreamASGA69A77FE": {
+   "Type": "AWS::AutoScaling::AutoScalingGroup",
+   "Properties": {
+    "LaunchTemplate": {
+     "LaunchTemplateId": {
+      "Ref": "VitalStreamLaunchTemplate2314E72C"
+     },
+     "Version": {
+      "Fn::GetAtt": [
+       "VitalStreamLaunchTemplate2314E72C",
+       "LatestVersionNumber"
+      ]
+     }
+    },
+    "MaxSize": "4",
+    "MinSize": "2",
+    "TargetGroupARNs": [
+     {
+      "Ref": "VitalStreamALBPublicListenerAppFleetGroup04A0DD14"
+     }
+    ],
+    "VPCZoneIdentifier": [
+     {
+      "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPrivateSubnet1SubnetE67D1B837A01CB64"
+     },
+     {
+      "Fn::ImportValue": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPrivateSubnet2Subnet9A5CD0FB1604AC0D"
+     }
+    ]
+   },
+   "UpdatePolicy": {
+    "AutoScalingScheduledAction": {
+     "IgnoreUnmodifiedGroupSizeProperties": true
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/VitalStreamASG/ASG"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/32OQU4DMQxFz9J9JtAUDlBYIKQuqk73yPWYqWnGGSUOVRXl7qgtVAMLVvZ//8mys+7h0d7P4Jga7A6N550trQIeDBzTWyF0trSEObKeXmLIo3l+l//Bq/SRUjIryIL7LQ2jB6Wz9ptUQx6SMvoA3Q48CLL0n86W5Th6RlAOsgrQPV06ipcT0zz1OCnJt/OzT/otxJ709vAkVgNZQ0LwLL0ty6yhvYab/ZfVeqZriDCQUjQbSiFHpGrWJ90HuVvY+cLO3ewjMTcxi/JAdnOdX1zt6jVzAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Compute/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+   "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+   "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Outputs": {
+  "ExportsOutputFnGetAttVitalStreamALBEC38BBB0DNSNameD81EA714": {
+   "Value": {
+    "Fn::GetAtt": [
+     "VitalStreamALBEC38BBB0",
+     "DNSName"
+    ]
+   },
+   "Export": {
+    "Name": "VitalStream-Compute:ExportsOutputFnGetAttVitalStreamALBEC38BBB0DNSNameD81EA714"
+   }
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

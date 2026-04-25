@@ -1,0 +1,655 @@
+{
+ "Resources": {
+  "VitalStreamVPC23BDFA91": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/Resource"
+   }
+  },
+  "VitalStreamVPCPublicSubnet1Subnet683C182A": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet1/Subnet"
+   }
+  },
+  "VitalStreamVPCPublicSubnet1RouteTableC1CD7014": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamVPCPublicSubnet1RouteTableAssociationD689EEB9": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPublicSubnet1RouteTableC1CD7014"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCPublicSubnet1Subnet683C182A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamVPCPublicSubnet1DefaultRouteDB8F5246": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VitalStreamVPCIGWA8A0FB7E"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPublicSubnet1RouteTableC1CD7014"
+    }
+   },
+   "DependsOn": [
+    "VitalStreamVPCVPCGWE224EFBD"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "VitalStreamVPCPublicSubnet1EIPACD305CC": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet1/EIP"
+   }
+  },
+  "VitalStreamVPCPublicSubnet1NATGatewayD9134048": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "VitalStreamVPCPublicSubnet1EIPACD305CC",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCPublicSubnet1Subnet683C182A"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PublicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "VitalStreamVPCPublicSubnet1DefaultRouteDB8F5246",
+    "VitalStreamVPCPublicSubnet1RouteTableAssociationD689EEB9"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet1/NATGateway"
+   }
+  },
+  "VitalStreamVPCPublicSubnet2SubnetF3332BBC": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet2/Subnet"
+   }
+  },
+  "VitalStreamVPCPublicSubnet2RouteTable0C5C7AAF": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamVPCPublicSubnet2RouteTableAssociationF9F531DD": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPublicSubnet2RouteTable0C5C7AAF"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCPublicSubnet2SubnetF3332BBC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamVPCPublicSubnet2DefaultRoute8CBB2DA6": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VitalStreamVPCIGWA8A0FB7E"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPublicSubnet2RouteTable0C5C7AAF"
+    }
+   },
+   "DependsOn": [
+    "VitalStreamVPCVPCGWE224EFBD"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet1SubnetE67D1B83": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet1/Subnet"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet1RouteTableC6DEA394": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet1RouteTableAssociation0C2351C9": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPrivateSubnet1RouteTableC6DEA394"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCPrivateSubnet1SubnetE67D1B83"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet1DefaultRoute8EDED94C": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VitalStreamVPCPublicSubnet1NATGatewayD9134048"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPrivateSubnet1RouteTableC6DEA394"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet1/DefaultRoute"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet2Subnet9A5CD0FB": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet2/Subnet"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet2RouteTable48A3A624": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet2RouteTableAssociation6A2EA0C5": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPrivateSubnet2RouteTable48A3A624"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCPrivateSubnet2Subnet9A5CD0FB"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamVPCPrivateSubnet2DefaultRoute7F85E0FF": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "VitalStreamVPCPublicSubnet1NATGatewayD9134048"
+    },
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCPrivateSubnet2RouteTable48A3A624"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/PrivateSubnet2/DefaultRoute"
+   }
+  },
+  "VitalStreamVPCIsolatedSubnet1Subnet461FD97C": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.4.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet1/Subnet"
+   }
+  },
+  "VitalStreamVPCIsolatedSubnet1RouteTable03523B77": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet1/RouteTable"
+   }
+  },
+  "VitalStreamVPCIsolatedSubnet1RouteTableAssociationA302B498": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCIsolatedSubnet1RouteTable03523B77"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCIsolatedSubnet1Subnet461FD97C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet1/RouteTableAssociation"
+   }
+  },
+  "VitalStreamVPCIsolatedSubnet2SubnetAAE8484B": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.5.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet2/Subnet"
+   }
+  },
+  "VitalStreamVPCIsolatedSubnet2RouteTable14C4BC01": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet2/RouteTable"
+   }
+  },
+  "VitalStreamVPCIsolatedSubnet2RouteTableAssociation22AAA243": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VitalStreamVPCIsolatedSubnet2RouteTable14C4BC01"
+    },
+    "SubnetId": {
+     "Ref": "VitalStreamVPCIsolatedSubnet2SubnetAAE8484B"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IsolatedSubnet2/RouteTableAssociation"
+   }
+  },
+  "VitalStreamVPCIGWA8A0FB7E": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "VitalStream-Network/VitalStreamVPC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/IGW"
+   }
+  },
+  "VitalStreamVPCVPCGWE224EFBD": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "VitalStreamVPCIGWA8A0FB7E"
+    },
+    "VpcId": {
+     "Ref": "VitalStreamVPC23BDFA91"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/VitalStreamVPC/VPCGW"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WOQQqDMBREz+I+plXbA4iU4qYELW7LN/3FVE1K8lMR8e5FLLqamccwTMzj05kfAxhcKJ9t2KmaTyWBbBkM7oEy5lP1kSx76UpkTPi6U7L0tUZa2O4K4wnvUHe4852lzhmpgJTRW3kxl1wscgO6AuEAIxNWfYFwH841odW4FdYn/5QSgWx61DSzAp3xVuLMxEiN0YeERwmP4uDtlAqt16R65MWqP55+bGn4AAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "VitalStream-Network/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ExportsOutputRefVitalStreamVPC23BDFA9139F5419A": {
+   "Value": {
+    "Ref": "VitalStreamVPC23BDFA91"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPC23BDFA9139F5419A"
+   }
+  },
+  "ExportsOutputRefVitalStreamVPCIsolatedSubnet1Subnet461FD97CAEC2580F": {
+   "Value": {
+    "Ref": "VitalStreamVPCIsolatedSubnet1Subnet461FD97C"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPCIsolatedSubnet1Subnet461FD97CAEC2580F"
+   }
+  },
+  "ExportsOutputRefVitalStreamVPCIsolatedSubnet2SubnetAAE8484B6B326AA8": {
+   "Value": {
+    "Ref": "VitalStreamVPCIsolatedSubnet2SubnetAAE8484B"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPCIsolatedSubnet2SubnetAAE8484B6B326AA8"
+   }
+  },
+  "ExportsOutputRefVitalStreamVPCPublicSubnet1Subnet683C182A2F7AEAD7": {
+   "Value": {
+    "Ref": "VitalStreamVPCPublicSubnet1Subnet683C182A"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPublicSubnet1Subnet683C182A2F7AEAD7"
+   }
+  },
+  "ExportsOutputRefVitalStreamVPCPublicSubnet2SubnetF3332BBC6901E9F9": {
+   "Value": {
+    "Ref": "VitalStreamVPCPublicSubnet2SubnetF3332BBC"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPublicSubnet2SubnetF3332BBC6901E9F9"
+   }
+  },
+  "ExportsOutputRefVitalStreamVPCPrivateSubnet1SubnetE67D1B837A01CB64": {
+   "Value": {
+    "Ref": "VitalStreamVPCPrivateSubnet1SubnetE67D1B83"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPrivateSubnet1SubnetE67D1B837A01CB64"
+   }
+  },
+  "ExportsOutputRefVitalStreamVPCPrivateSubnet2Subnet9A5CD0FB1604AC0D": {
+   "Value": {
+    "Ref": "VitalStreamVPCPrivateSubnet2Subnet9A5CD0FB"
+   },
+   "Export": {
+    "Name": "VitalStream-Network:ExportsOutputRefVitalStreamVPCPrivateSubnet2Subnet9A5CD0FB1604AC0D"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

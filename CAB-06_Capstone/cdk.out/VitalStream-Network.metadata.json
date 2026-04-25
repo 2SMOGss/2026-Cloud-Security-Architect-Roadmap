@@ -1,0 +1,224 @@
+{
+  "/VitalStream-Network/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-Network/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPC23BDFA91"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIGWA8A0FB7E"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCVPCGWE224EFBD"
+    }
+  ],
+  "/VitalStream-Network/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPC23BDFA91\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPC23BDFA9139F5419A"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPCIsolatedSubnet1Subnet461FD97C\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPCIsolatedSubnet1Subnet461FD97CAEC2580F"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPCIsolatedSubnet2SubnetAAE8484B\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPCIsolatedSubnet2SubnetAAE8484B6B326AA8"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPCPublicSubnet1Subnet683C182A\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPCPublicSubnet1Subnet683C182A2F7AEAD7"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPCPublicSubnet2SubnetF3332BBC\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPCPublicSubnet2SubnetF3332BBC6901E9F9"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPCPrivateSubnet1SubnetE67D1B83\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPCPrivateSubnet1SubnetE67D1B837A01CB64"
+    }
+  ],
+  "/VitalStream-Network/Exports/Output{\"Ref\":\"VitalStreamVPCPrivateSubnet2Subnet9A5CD0FB\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefVitalStreamVPCPrivateSubnet2Subnet9A5CD0FB1604AC0D"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet1Subnet683C182A"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet1RouteTableC1CD7014"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet1RouteTableAssociationD689EEB9"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet1DefaultRouteDB8F5246"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet1EIPACD305CC"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet1NATGatewayD9134048"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet2SubnetF3332BBC"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet2RouteTable0C5C7AAF"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet2RouteTableAssociationF9F531DD"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PublicSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPublicSubnet2DefaultRoute8CBB2DA6"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet1SubnetE67D1B83"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet1RouteTableC6DEA394"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet1RouteTableAssociation0C2351C9"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet1DefaultRoute8EDED94C"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet2Subnet9A5CD0FB"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet2RouteTable48A3A624"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet2RouteTableAssociation6A2EA0C5"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/PrivateSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCPrivateSubnet2DefaultRoute7F85E0FF"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IsolatedSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIsolatedSubnet1Subnet461FD97C"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IsolatedSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIsolatedSubnet1RouteTable03523B77"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IsolatedSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIsolatedSubnet1RouteTableAssociationA302B498"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IsolatedSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIsolatedSubnet2SubnetAAE8484B"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IsolatedSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIsolatedSubnet2RouteTable14C4BC01"
+    }
+  ],
+  "/VitalStream-Network/VitalStreamVPC/IsolatedSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamVPCIsolatedSubnet2RouteTableAssociation22AAA243"
+    }
+  ]
+}

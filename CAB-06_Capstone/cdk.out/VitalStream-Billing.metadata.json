@@ -1,0 +1,38 @@
+{
+  "/VitalStream-Billing/MonthlyBudget": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "MonthlyBudget"
+    }
+  ],
+  "/VitalStream-Billing/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-Billing/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-Billing/BudgetAlertTopic/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BudgetAlertTopicF20DF526"
+    }
+  ],
+  "/VitalStream-Billing/BillingAlarmLowThreshold/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BillingAlarmLowThreshold727AB8B3"
+    }
+  ],
+  "/VitalStream-Billing/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ]
+}

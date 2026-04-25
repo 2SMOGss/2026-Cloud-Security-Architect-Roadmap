@@ -1,0 +1,80 @@
+{
+  "/VitalStream-Storage/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/VitalStream-Storage/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-Storage/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-Storage/VitalStreamStaticAssets/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamStaticAssets454F4633"
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/VitalStream-Storage/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    }
+  ],
+  "/VitalStream-Storage/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    }
+  ],
+  "/VitalStream-Storage/VitalStreamCDN/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamCDNFF6579D6"
+    }
+  ],
+  "/VitalStream-Storage/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-Storage/VitalStreamStaticAssets/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamStaticAssetsPolicy88E3CC48"
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/VitalStream-Storage/VitalStreamStaticAssets/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamStaticAssetsAutoDeleteObjectsCustomResourceB818DCE8"
+    }
+  ],
+  "/VitalStream-Storage/VitalStreamCDN/Origin1/S3Origin/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamCDNOrigin1S3Origin5861526B"
+    }
+  ]
+}

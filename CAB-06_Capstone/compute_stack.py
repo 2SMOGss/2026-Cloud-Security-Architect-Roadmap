@@ -27,9 +27,8 @@ class VitalStreamComputeStack(Stack):
             security_group=self.alb_sg
         )
 
-        # 3. Auto Scaling Group
-        self.asg = asg.AutoScalingGroup(self, "VitalStreamASG",
-            vpc=vpc,
+        # 3. Launch Template (Modern replacement for Launch Configurations)
+        self.launch_template = ec2.LaunchTemplate(self, "VitalStreamLaunchTemplate",
             instance_type=ec2.InstanceType.of(
                 ec2.InstanceClass.BURSTABLE3, 
                 ec2.InstanceSize.MICRO
@@ -37,6 +36,26 @@ class VitalStreamComputeStack(Stack):
             machine_image=ec2.AmazonLinuxImage(
                 generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2
             ),
+            security_group=ec2.SecurityGroup(self, "VitalStreamAsgSG",
+                vpc=vpc,
+                description="Allow traffic from ALB",
+                allow_all_outbound=True
+            ),
+            user_data=ec2.UserData.for_linux()
+        )
+        self.launch_template.user_data.add_commands(
+            "yum update -y",
+            "yum install -y httpd",
+            "systemctl start httpd",
+            "systemctl enable httpd",
+            "echo '<h1>VitalStream Medical Portal - SENTINEL AUDIT READY</h1>' > /var/www/html/index.html"
+        )
+        self.launch_template.connections.allow_from(self.alb, ec2.Port.tcp(80))
+
+        # 4. Auto Scaling Group using the Launch Template
+        self.asg = asg.AutoScalingGroup(self, "VitalStreamASG",
+            vpc=vpc,
+            launch_template=self.launch_template,
             min_capacity=2,
             max_capacity=4,
             vpc_subnets=ec2.SubnetSelection(
@@ -51,12 +70,7 @@ class VitalStreamComputeStack(Stack):
             targets=[self.asg]
         )
 
-        # 5. Add ALB as Origin to CloudFront Distribution for Dynamic Content
-        distribution.add_origin(origins.LoadBalancerV2Origin(self.alb,
-            protocol_policy=cf.OriginProtocolPolicy.HTTP_ONLY # For lab simplicity; use HTTPS for prod
-        ))
-
-        # 6. Add Behavior for /api/* or dynamic paths
+        # 5. Add Behavior for /api/* or dynamic paths to route traffic to the ALB
         distribution.add_behavior("/api/*", 
             origin=origins.LoadBalancerV2Origin(self.alb),
             viewer_protocol_policy=cf.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,

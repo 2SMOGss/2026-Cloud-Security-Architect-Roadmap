@@ -1,0 +1,50 @@
+{
+  "/VitalStream-RDS/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-RDS/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-RDS/VitalStreamRdsSG/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamRdsSG5CD64003"
+    }
+  ],
+  "/VitalStream-RDS/VitalStreamDB/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDB63C04CCB"
+    }
+  ],
+  "/VitalStream-RDS/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-RDS/VitalStreamDB/SubnetGroup/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSubnetGroupB862FE1D"
+    }
+  ],
+  "/VitalStream-RDS/VitalStreamDB/Secret/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecretAAB7DDB9"
+    }
+  ],
+  "/VitalStream-RDS/VitalStreamDB/Secret/Attachment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamDBSecretAttachmentC6D66015"
+    }
+  ]
+}

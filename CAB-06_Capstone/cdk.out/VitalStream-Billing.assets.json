@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "43e5994734ed63f0cb63cc49ae6ee1967e9a382da0904b26b95dcefd0da6438d": {
+      "displayName": "VitalStream-Billing Template",
+      "source": {
+        "path": "VitalStream-Billing.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1-0a010595": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "43e5994734ed63f0cb63cc49ae6ee1967e9a382da0904b26b95dcefd0da6438d.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

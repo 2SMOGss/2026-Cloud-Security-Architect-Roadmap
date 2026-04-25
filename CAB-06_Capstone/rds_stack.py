@@ -1,6 +1,7 @@
 from aws_cdk import (
     Stack,
     RemovalPolicy,
+    Duration,
     aws_rds as rds,
     aws_ec2 as ec2,
 )
@@ -34,8 +35,9 @@ class VitalStreamRdsStack(Stack):
             allocated_storage=20,
             max_allocated_storage=50,
             storage_type=rds.StorageType.GP3,
+            storage_encrypted=True,
             security_groups=[self.rds_sg],
             removal_policy=RemovalPolicy.DESTROY, # For labs only
             deletion_protection=False,
-            backup_retention=ec2.Duration.days(7)
+            backup_retention=Duration.days(7)
         )

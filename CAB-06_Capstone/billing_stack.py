@@ -22,6 +22,7 @@ class VitalStreamBillingStack(Stack):
         # 2. Implement $30 Monthly Budget
         budgets.CfnBudget(self, "MonthlyBudget",
             budget=budgets.CfnBudget.BudgetDataProperty(
+                budget_name="VitalStream-Budget",
                 budget_limit=budgets.CfnBudget.SpendProperty(
                     amount=30,
                     unit="USD"

@@ -1,0 +1,80 @@
+{
+  "/VitalStream-Compute/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+    }
+  ],
+  "/VitalStream-Compute/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/VitalStream-Compute/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamAlbSG/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamAlbSGBCA4D67B"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamALB/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBEC38BBB0"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamAsgSG/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamAsgSGB50A5487"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamAsgSG/from VitalStreamComputeVitalStreamAlbSG973EB281:80": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamAsgSGfromVitalStreamComputeVitalStreamAlbSG973EB28180F91A1659"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamLaunchTemplate/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamLaunchTemplate2314E72C"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamASG/ASG": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamASGA69A77FE"
+    }
+  ],
+  "/VitalStream-Compute/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/VitalStream-Compute/Exports/Output{\"Fn::GetAtt\":[\"VitalStreamALBEC38BBB0\",\"DNSName\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttVitalStreamALBEC38BBB0DNSNameD81EA714"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamALB/PublicListener/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBPublicListenerA3962121"
+    }
+  ],
+  "/VitalStream-Compute/VitalStreamALB/PublicListener/AppFleetGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VitalStreamALBPublicListenerAppFleetGroup04A0DD14"
+    }
+  ]
+}

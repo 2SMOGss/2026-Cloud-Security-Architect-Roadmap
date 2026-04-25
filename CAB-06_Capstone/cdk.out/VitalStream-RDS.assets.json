@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "b684d75cbe4b2e77b285ccdbadd3b14646fe7a6ef05e638a4574e5219426b57f": {
+      "displayName": "VitalStream-RDS Template",
+      "source": {
+        "path": "VitalStream-RDS.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1-827a0cc3": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "b684d75cbe4b2e77b285ccdbadd3b14646fe7a6ef05e638a4574e5219426b57f.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
