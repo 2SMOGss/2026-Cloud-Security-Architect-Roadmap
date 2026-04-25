@@ -38,9 +38,9 @@ The network is segmented into three distinct tiers across multiple Availability 
 * **Compliance Mindset:** Integrated security checks for **VPC Flow Logs** to support future HIPAA auditing.
 
 ## 🚀 How to Run
-1. **Provision Infrastructure:** Execute `./create_medical_vpc.sh` (Week 01).
-2. **Deploy Capstone:** Run `bash Week_06_Capstone_Web_Platform/deploy_portal.sh` to launch the inventory portal.
-3. **Verify:** Run `./verify_medical_vpc.sh` to audit the core network.
+1. **Provision Infrastructure:** Refer to archived scripts in `archive/Week_01_Medical_VPC`.
+2. **Deploy Capstone:** Run `bash archive/Week_06_Capstone_Web_Platform/deploy_portal.sh` to launch the inventory portal.
+3. **Verify:** Use the auditing logic in `assets/cab/`.
 
 ---
 **About Me:** I am a former Paramedic with 20 years of emergency response experience, currently transitioning into Cloud Security Engineering. I hold a **Google Cybersecurity Certificate** and am actively documenting my journey to the **AWS SAA-C03**.

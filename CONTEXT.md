@@ -36,13 +36,13 @@
 ## 🤖 AI Interaction Protocol
 * **Antigravity Agent Role:** Cloud Engineer / Executioner.
 * **Gemini Chat Role:** Lead Architect / Strategic Advisor.
-* **Communication:** Agent should refer to this file and the `Roadmap_2026.md` for all task context.
+* **Communication:** Agent should refer to this file and the `roadmap-v3.2.md` for all task context.
 
 ## 📚 Documentation & Knowledge Sharing Protocol
-*   **Trigger:** Create a new Markdown file in `learning_teach/` **each time a new concept or task is completed**.
+*   **Trigger:** Create a new Markdown file in `assets/docs/learning_teach/` **each time a new concept or task is completed**.
 *   **Format:** MARP-ready Slides (`marp: true`, `theme: 2smogss`).
 *   **Naming Convention:** `WeekX_Topic_Name.md` (e.g., `Week1_Securing_Medical_VPC.md`).
-*   **Organization:** If `learning_teach/` becomes cluttered, refactor into subfolders (e.g., `learning_teach/Week_1/`).
+*   **Organization:** If `assets/docs/learning_teach/` becomes cluttered, refactor into subfolders (e.g., `assets/docs/learning_teach/Week_1/`).
 *   **Content Goal:** Create content suitable for "Building in Public" (X/Twitter posts).
 
 POLICY: Manual Terminal Execution (MTE - Git Bash Preference)

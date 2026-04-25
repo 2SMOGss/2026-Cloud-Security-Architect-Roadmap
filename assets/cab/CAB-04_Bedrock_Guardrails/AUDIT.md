@@ -25,12 +25,12 @@ Tested with prompt: *"Patient name: John Doe (Phone: 555-0199). Please summarize
 ## ✅ Verification Proof
 
 ### Infrastructure Deployment Logic
-![CDK Deployment Proof](../assets/cdk_deploy_proof_1.png)
+![CDK Deployment Proof](../../images/cdk_deploy_proof_1.png)
 
-### Live Stack Identification
-![Guardrail Identification](../assets/cdk_deploy_proof_2.png)
+### ✅ Guardrail Logic Identification
+![Guardrail Identification](../../images/cdk_deploy_proof_2.png)
 
-### PII/PHI Redaction Success
-![Sentinel Shield Trigger](../assets/phi_redaction_block.png)
+### ✅ Sentinel Shield Activation Proof
+![Sentinel Shield Trigger](../../images/phi_redaction_block.png)
 
 The assistant intercepted a medical record prompt containing a Name and Phone Number, returning the custom guardrail message:
