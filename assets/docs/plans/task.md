@@ -7,4 +7,4 @@
 | Relocate Cloud Architecture Badges (CABs) | done | Folders moved to assets/cab/ and archive/. |
 | Relocate Documentation and Learning Materials | done | docs/ and learning_teach/ moved to assets/docs/. |
 | Relocate Media Assets | done | Images and videos moved to assets/images/. |
-| Update Internal Links | todo | |
+| Update Internal Links | done | Links updated in README.md, CONTEXT.md, and key CAB docs. |
