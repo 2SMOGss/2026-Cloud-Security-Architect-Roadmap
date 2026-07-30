@@ -35,7 +35,7 @@ Canonical roadmap detail lives in [`roadmap-v3.2.md`](./roadmap-v3.2.md). This f
 - [x] Redact real AWS resource IDs from `AUDIT.md`
 - [x] Refresh `CONTEXT.md` status tracker
 - [x] Update `CONTRIBUTING.md` for the CAB-XX/`assets/cab/` convention
-- [ ] Repair the corrupted `.gitignore` tail (UTF-16 garbage lines)
+- [x] Repair the corrupted `.gitignore` tail (UTF-16 garbage lines)
 
 ## Phase 6: Portfolio Extensions (Optional, Post-Cert)
 
