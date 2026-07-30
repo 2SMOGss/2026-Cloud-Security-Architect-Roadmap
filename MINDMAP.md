@@ -21,7 +21,7 @@ mindmap
       Weeks 16-18: S3 Lifecycle, Intelligent-Tiering, AWS Budgets - Domain 4 - BUILT, PENDING LIVE VERIFICATION
     (CAB-07: Serverless Performance)
       ::icon(fa fa-bolt)
-      Weeks 19-21: Lambda, SQS, EventBridge - Domain 3 - NOT STARTED
+      Weeks 19-21: SQS, Reserved Concurrency, EventBridge, CloudFront - Domain 3 - BUILT, PENDING LIVE VERIFICATION
     (CAB-08: Final Blitz)
       ::icon(fa fa-certificate)
       Weeks 22-24: SAA-C03 Certification and Portfolio Launch

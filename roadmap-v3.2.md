@@ -15,7 +15,7 @@ Each CAB is scoped to one SAA-C03 exam domain so the roadmap tracks exam coverag
 | **CAB-04** | AI | 10-12 | **Bedrock & Guardrails** — Zero-exfiltration AI assistant via PrivateLink + PII/PHI redaction. | Domain 1: Secure Architectures | ✅ Complete |
 | **CAB-05** | Resilience | 13-15 | **High Availability** — Multi-AZ RDS, ASG self-healing, Zero-Downtime chaos audit. | Domain 2: Resilient Architectures | ✅ Complete |
 | **CAB-06** | Cost | 16-18 | **S3 Lifecycle & Cost Optimization** — Storage classes, lifecycle policies, Intelligent-Tiering, AWS Budgets. | Domain 4: Cost-Optimized Architectures | 🟡 Built, pending live AWS verification |
-| **CAB-07** | Performance | 19-21 | **Serverless Decoupling** — Lambda, SQS, EventBridge, caching/CloudFront, Route 53 routing. | Domain 3: High-Performing Architectures | 🔲 Not started |
+| **CAB-07** | Performance | 19-21 | **Serverless Decoupling** — SQS+DLQ, Lambda reserved concurrency, EventBridge pub/sub, CloudFront+OAC caching. | Domain 3: High-Performing Architectures | 🟡 Built, pending live AWS verification |
 | **CAB-08** | Final Blitz | 22-24 | **Cert & Portfolio** — Full question-bank review, timed practice exam, portfolio launch. | All domains | 🔲 Not started |
 
 ## 🎁 Phase 6: Portfolio Extensions (Optional, Post-Cert)

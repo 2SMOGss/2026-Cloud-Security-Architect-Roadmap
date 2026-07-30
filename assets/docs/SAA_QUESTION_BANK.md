@@ -51,8 +51,18 @@
 | **CAB-06** | Hidden Cost Leak | A bucket's storage cost is higher than expected even though visible objects are small. What's a common cause? | **Incomplete multipart uploads** that were never aborted — they still consume storage and bill indefinitely unless a lifecycle rule aborts them after N days. |
 | **CAB-06** | Budgets vs Cost Explorer vs Trusted Advisor | What's the difference between these three cost tools? | **AWS Budgets** alerts on actual/forecasted spend against a threshold you set. **Cost Explorer** visualizes and analyzes historical spend trends. **Trusted Advisor** flags specific optimization opportunities (idle EC2, low-utilization RDS, unattached EBS, etc.) as a support-plan feature. |
 
+## 🏷️ Domain 3: Design High-Performing Architectures
+
+| Week | Concept | Question | Answer |
+| :--- | :--- | :--- | :--- |
+| **CAB-07** | SQS Visibility Timeout | Why size an SQS queue's visibility timeout off the consumer's function timeout instead of leaving the 30-second default? | If the consumer is still processing when the timeout expires, SQS makes the message visible again and a second worker can pick it up — a common cause of duplicate processing. AWS recommends at least 6x the consumer's timeout. |
+| **CAB-07** | Reserved Concurrency | An SQS-triggered Lambda writes to an RDS instance that can only handle a handful of connections at once. A traffic spike floods the queue. What protects the database? | Set **Reserved Concurrent Executions** on the Lambda — it caps how many invocations can run in parallel regardless of how deep the queue gets. |
+| **CAB-07** | SQS vs EventBridge | You need to decouple a producer from exactly one consumer that must process every message in order it arrives (per group). Later, you need to decouple a domain event from an unknown, growing number of subscribers. Which service for which? | **SQS** for point-to-point buffering to one consumer type (use FIFO if ordering matters). **EventBridge** for pub/sub fan-out where the publisher shouldn't need to know who's listening. |
+| **CAB-07** | CloudFront Origin Access | Why use Origin Access Control (OAC) instead of making the S3 origin bucket public when it's already sitting behind CloudFront? | A public bucket can be reached directly, bypassing CloudFront (and any caching, WAF, or geo-restriction it provides). OAC lets only the specific CloudFront distribution read the bucket. |
+| **CAB-07** | Dead Letter Queues | What's the purpose of a DLQ and what happens without one? | A DLQ catches messages that fail processing repeatedly (`maxReceiveCount` exceeded) for later inspection. Without one, poison messages either loop forever, consuming consumer capacity, or silently vanish at the queue's retention limit. |
+
 ---
 ## 🏁 Status Check:
-- **Questions Stored:** 36
-- **Coverage Gap:** No questions yet for Domain 3 (High-Performing Architectures) — add these as CAB-07 is built.
-- **Priority Domain:** Domain 3 (High-Performing Architectures) — the only domain with zero coverage now that CAB-02 and CAB-06 are built. CAB-07 is the last open block before CAB-08 (Final Blitz).
+- **Questions Stored:** 41
+- **Coverage Gap:** None — all four SAA-C03 domains now have question-bank coverage.
+- **Next Step:** All of CAB-02, CAB-06, and CAB-07 are code-complete but pending live AWS deployment/verification. CAB-08 (Final Blitz: timed practice exam + portfolio launch) is the last open block.

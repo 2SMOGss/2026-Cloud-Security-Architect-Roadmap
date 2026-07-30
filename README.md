@@ -15,7 +15,7 @@ Canonical source: [`roadmap-v3.2.md`](./roadmap-v3.2.md). Each CAB maps to one S
 | **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** — Zero-exfiltration AI assistant. | Domain 1 | ✅ Complete |
 | **13-15** | **CAB-05** | Resilience | **High Availability** — Zero-Downtime Architecture. | Domain 2 | ✅ Complete |
 | **16-18** | **CAB-06** | Cost | **S3 Lifecycle & Cost Optimization** — Storage tiering, Intelligent-Tiering, AWS Budgets. | Domain 4 | 🟡 Built, pending live verification |
-| **19-21** | **CAB-07** | Performance | **Serverless Decoupling** — Lambda, SQS, EventBridge. | Domain 3 | 🔲 Not started |
+| **19-21** | **CAB-07** | Performance | **Serverless Decoupling** — SQS+DLQ, reserved concurrency, EventBridge, CloudFront. | Domain 3 | 🟡 Built, pending live verification |
 | **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** — SAA-C03 exam prep & launch. | All | 🔲 Not started |
 
 CI/CD automation, Kinesis/Glue data ingestion, and SageMaker isolation moved to an optional **Phase 6: Portfolio Extensions** (post-cert) — see `roadmap-v3.2.md`.
