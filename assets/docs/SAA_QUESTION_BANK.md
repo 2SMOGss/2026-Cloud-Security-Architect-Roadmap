@@ -35,8 +35,34 @@
 | **CAB-05** | Instance Refresh | Benefit of ASG Instance Refresh over manual termination? | Performs a **controlled rolling update**, maintaining `MinHealthyPercentage` while deploying new Launch Template versions. |
 | **CAB-05** | Private Updates | How do instances in isolated subnets download OS patches securely? | Via a **NAT Gateway** in a Public Subnet (or VPC Endpoints for specific AWS services). |
 | **CAB-05** | 502 Bad Gateway | #1 cause of ALB returning 502 with healthy EC2 instances? | **Security Group mismatch**: The EC2 SG does not allow ingress from the ALB's SG on the application port. |
+| **CAB-02** | Permission Boundaries | What does an IAM Permissions Boundary actually control? | It sets the **maximum** permissions a role/user can have — the role's own identity-based policies can only narrow access further, never exceed the boundary. |
+| **CAB-02** | ABAC | What is Attribute-Based Access Control (ABAC), and why use it over per-resource roles? | Access decisions are based on **tags** (e.g., `aws:PrincipalTag`, `aws:ResourceTag`) instead of hardcoding a role per resource — it scales least privilege without policy sprawl. |
+| **CAB-02** | Resource vs Identity Policy Precedence | If an identity-based policy allows an action but a resource-based (bucket) policy explicitly denies it, what wins? | An explicit **Deny** always wins, regardless of which policy type it's on. |
+| **CAB-02** | IAM Access Analyzer | What does IAM Access Analyzer detect that a manual policy review might miss? | Resource-based policies (S3 bucket policies, KMS key policies, IAM role trust policies, etc.) that grant access to a principal **outside** the account or organization — i.e., unintended external access. |
+| **CAB-02** | Zero-Trust Bucket Policy | Why enforce `aws:PrincipalTag` conditions on a bucket policy instead of relying only on IAM role permissions? | Zero-Trust assumes internal identity alone isn't enough proof of authorization — a resource-based deny-by-default policy blocks access even if a caller's identity-based policy would otherwise allow it. |
+
+## 🏷️ Domain 4: Design Cost-Optimized Architectures
+
+| Week | Concept | Question | Answer |
+| :--- | :--- | :--- | :--- |
+| **CAB-06** | S3 Storage Classes | For medical imaging accessed daily for a month, then rarely, then almost never after a year — what's the cost-optimal tiering? | Standard → Standard-IA (after ~30 days) → Glacier (after ~90 days) → Glacier Deep Archive (after ~180 days), via an S3 Lifecycle Rule. |
+| **CAB-06** | Lifecycle vs Intelligent-Tiering | When should you use S3 Intelligent-Tiering instead of manual lifecycle rules? | When the access pattern is **unpredictable** — Intelligent-Tiering has no retrieval fee (unlike Glacier) and moves objects automatically, at the cost of a small per-object monitoring fee. |
+| **CAB-06** | Encryption Cost Tradeoff | Why choose SSE-S3 over SSE-KMS for a large archival bucket with no key-rotation requirement? | SSE-KMS bills per API call (`kms:GenerateDataKey`, etc.) at scale; SSE-S3 is free. Reserve CMKs (SSE-KMS) for data that specifically needs key-level audit and rotation control. |
+| **CAB-06** | Hidden Cost Leak | A bucket's storage cost is higher than expected even though visible objects are small. What's a common cause? | **Incomplete multipart uploads** that were never aborted — they still consume storage and bill indefinitely unless a lifecycle rule aborts them after N days. |
+| **CAB-06** | Budgets vs Cost Explorer vs Trusted Advisor | What's the difference between these three cost tools? | **AWS Budgets** alerts on actual/forecasted spend against a threshold you set. **Cost Explorer** visualizes and analyzes historical spend trends. **Trusted Advisor** flags specific optimization opportunities (idle EC2, low-utilization RDS, unattached EBS, etc.) as a support-plan feature. |
+
+## 🏷️ Domain 3: Design High-Performing Architectures
+
+| Week | Concept | Question | Answer |
+| :--- | :--- | :--- | :--- |
+| **CAB-07** | SQS Visibility Timeout | Why size an SQS queue's visibility timeout off the consumer's function timeout instead of leaving the 30-second default? | If the consumer is still processing when the timeout expires, SQS makes the message visible again and a second worker can pick it up — a common cause of duplicate processing. AWS recommends at least 6x the consumer's timeout. |
+| **CAB-07** | Reserved Concurrency | An SQS-triggered Lambda writes to an RDS instance that can only handle a handful of connections at once. A traffic spike floods the queue. What protects the database? | Set **Reserved Concurrent Executions** on the Lambda — it caps how many invocations can run in parallel regardless of how deep the queue gets. |
+| **CAB-07** | SQS vs EventBridge | You need to decouple a producer from exactly one consumer that must process every message in order it arrives (per group). Later, you need to decouple a domain event from an unknown, growing number of subscribers. Which service for which? | **SQS** for point-to-point buffering to one consumer type (use FIFO if ordering matters). **EventBridge** for pub/sub fan-out where the publisher shouldn't need to know who's listening. |
+| **CAB-07** | CloudFront Origin Access | Why use Origin Access Control (OAC) instead of making the S3 origin bucket public when it's already sitting behind CloudFront? | A public bucket can be reached directly, bypassing CloudFront (and any caching, WAF, or geo-restriction it provides). OAC lets only the specific CloudFront distribution read the bucket. |
+| **CAB-07** | Dead Letter Queues | What's the purpose of a DLQ and what happens without one? | A DLQ catches messages that fail processing repeatedly (`maxReceiveCount` exceeded) for later inspection. Without one, poison messages either loop forever, consuming consumer capacity, or silently vanish at the queue's retention limit. |
 
 ---
 ## 🏁 Status Check:
-- **Questions Stored:** 26
-- **Priority Domain:** Domain 2 (Design Resilient Architectures)
+- **Questions Stored:** 41
+- **Coverage Gap:** None — all four SAA-C03 domains now have question-bank coverage.
+- **Next Step:** All of CAB-02, CAB-06, and CAB-07 are code-complete but pending live AWS deployment/verification. CAB-08 (Final Blitz: timed practice exam + portfolio launch) is the last open block.

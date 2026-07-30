@@ -47,7 +47,7 @@
 - 📊 [**Google Capstone SQL**](https://github.com/2SMOGss/MySQL) - Advanced database manipulation and security auditing for Google Cybersecurity Cert.
 
 ---
-## ?? Intelligence Feed (Connect)
+## 📡 Intelligence Feed (Connect)
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/robchich)
 [![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/@robchich)
 [![X](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white)](https://twitter.com/2sm0gSS)

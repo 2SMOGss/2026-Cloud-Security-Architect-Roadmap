@@ -25,13 +25,12 @@
 3. **Build in Public (BiP):** Documentation of the "Build -> Verify -> Destroy" cycle is a hard requirement for each lab.
 
 ## 📍 Current Status
-* **Phase:** 2 (Secure Architecture Design).
-* **Week:** 06 (Capstone Web Platform).
-* **Completed Tasks:**
-    * Week 1-2: VPC Hardening, Linux Security Auditing.
-    * Week 3-4: Networking Core (NACLs, Subnet isolation).
-    * Week 5: VPC Flow Logs & Incident Response logic.
-    * Documentation for Weeks 1-5 created and refined.
+*(Last synced against `roadmap-v3.2.md` — that file is the source of truth if this drifts again.)*
+* **Completed:** CAB-01 (VPC Plumbing), CAB-03 (KMS & PHI Protection), CAB-04 (Bedrock & Guardrails), CAB-05 (High Availability).
+* **Built, pending live verification:** CAB-02 (IAM & Zero-Trust), CAB-06 (S3 Lifecycle & Cost Optimization), CAB-07 (Serverless Decoupling & Performance) — CDK code + passing unit tests exist for all three; none has been `cdk deploy`'d against a real account yet. Follow each one's `LAB_GUIDE.md` and update its `AUDIT.md` once deployed.
+* **Not started:** CAB-08 (Final Blitz / Cert Prep) — the last block, and it depends on the three above actually being deployed/verified first.
+* **Side projects:** `sentinel-badge` (Sentinel View Counter badge, Vercel).
+* **Exam-readiness note:** All four SAA-C03 domains now have code and question-bank coverage. The remaining work is real AWS deployment/verification of CAB-02/06/07, then CAB-08's timed practice exam.
 
 ## 🤖 AI Interaction Protocol
 * **Antigravity Agent Role:** Cloud Engineer / Executioner.

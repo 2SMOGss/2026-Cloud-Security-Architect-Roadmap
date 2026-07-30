@@ -7,8 +7,8 @@
 To implement a zero-exfiltration AI assistant using Amazon Bedrock, ensuring all PHI is redacted before it reaches the Large Language Model (LLM) and that all traffic remains within the private AWS network backbone.
 
 ## 🏗️ Architecture Design (SAA-C03 Domain 1)
-- **Networking**: VitalStream 3-Tier VPC (us-east-2: `vpc-0b8a767698259bbdc`) using Interface VPC Endpoints (AWS PrivateLink).
-- **Control Plane**: Bedrock Guardrails (`n4vcp7tyntkl`) configured for PII/PHI redaction.
+- **Networking**: VitalStream 3-Tier VPC (us-east-2: `vpc-0EXAMPLE12345678`) using Interface VPC Endpoints (AWS PrivateLink).
+- **Control Plane**: Bedrock Guardrails (`EXAMPLEGUARDRAILID`) configured for PII/PHI redaction.
 - **Least Privilege**: VPC Endpoint Policy restricted to specific Regional Inference Profiles.
 
 ## 🛠️ Critical Troubleshooting Log
