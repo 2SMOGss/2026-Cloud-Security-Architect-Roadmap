@@ -39,4 +39,5 @@
 ---
 ## 🏁 Status Check:
 - **Questions Stored:** 26
-- **Priority Domain:** Domain 2 (Design Resilient Architectures)
+- **Coverage Gap:** No questions yet for Domain 3 (High-Performing Architectures) or Domain 4 (Cost-Optimized Architectures) — add these as CAB-06/CAB-07 are built.
+- **Priority Domain:** Domain 4 (Cost-Optimized Architectures) — currently zero coverage, and CAB-02 (Domain 1) is the only other open block.

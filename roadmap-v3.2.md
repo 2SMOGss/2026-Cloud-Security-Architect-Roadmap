@@ -1,18 +1,30 @@
-# 🚀 2026 AI-First Cloud Security Architect Roadmap (V2.3)
+# 🚀 2026 AI-First Cloud Security Architect Roadmap (V3.2)
 *The Ephemeral Path to SAA-C03, HIPAA Compliance, and Agentic Orchestration*
+
+**This file is the single source of truth for the roadmap.** `README.md` and `MINDMAP.md` mirror this table — if they ever drift, this one wins.
 
 ## 🗺️ The Architecture Blocks (CABs)
 
-| Block | Phase | Weeks | Focus | Goal |
-| :--- | :--- | :--- | :--- | :--- |
-| **CAB-01** | Foundations | 1-3 | **VPC Plumbing & CLI** | Build VitalStream 3-tier VPC. Review Deck: "VPC Packet Journey". |
-| **CAB-02** | Security | 4-6 | **IAM & Zero-Trust** | IAM Identity Center & Least Privilege. Initialize EPT & Ulta Agents. |
-| **CAB-03** | Storage/Cost | 7-9 | **KMS & S3 Lifecycle** | Encryption at rest (KMS). Implement S3 Lifecycle Policies for PHI cost-tiering. |
-| **CAB-04** | Serverless | 10-12 | **The Serverless Triage** | Decouple app via Lambda, SQS, and EventBridge. Implement Token Watchdog. |
-| **CAB-05** | Resilience | 13-15 | **High Availability** | Multi-AZ RDS, ASG, and Global Accelerator for "Zero-Downtime" medical access. |
-| **CAB-06** | Data Flow | 16-18 | **Ingestion & DevOps** | Kinesis for telemetry ingestion; AWS Glue for ETL. Automate via GitHub Actions. |
-| **CAB-07** | Intelligence | 19-21 | **SageMaker Security** | Private Link and EMR security. Bedrock Guardrails for compliance auditing. |
-| **CAB-08** | Final Blitz | 22-24 | **Cert & Portfolio** | SAA-C03 Exam prep. Review all "Architect Blueprint" slide decks from `learning_teach/`. |
+Each CAB is scoped to one SAA-C03 exam domain so the roadmap tracks exam coverage directly, not just topic interest.
+
+| Block | Phase | Weeks | Focus | Exam Domain | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **CAB-01** | Foundations | 1-3 | **VPC Plumbing & CLI** — Build VitalStream 3-tier VPC by hand (no console). | Domain 1: Secure Architectures | ✅ Complete |
+| **CAB-02** | Security | 4-6 | **IAM & Zero-Trust** — IAM Identity Center, least privilege, initialize EPT & Ulta Agents. | Domain 1: Secure Architectures | 🔲 Up next |
+| **CAB-03** | Data | 7-9 | **KMS & PHI Protection** — Encryption at rest, HIPAA/NIST auditing, immutable audit logs. | Domain 1: Secure Architectures | ✅ Complete |
+| **CAB-04** | AI | 10-12 | **Bedrock & Guardrails** — Zero-exfiltration AI assistant via PrivateLink + PII/PHI redaction. | Domain 1: Secure Architectures | ✅ Complete |
+| **CAB-05** | Resilience | 13-15 | **High Availability** — Multi-AZ RDS, ASG self-healing, Zero-Downtime chaos audit. | Domain 2: Resilient Architectures | ✅ Complete |
+| **CAB-06** | Cost | 16-18 | **S3 Lifecycle & Cost Optimization** — Storage classes, lifecycle policies, Reserved/Savings Plans, Trusted Advisor. | Domain 4: Cost-Optimized Architectures | 🔲 Not started |
+| **CAB-07** | Performance | 19-21 | **Serverless Decoupling** — Lambda, SQS, EventBridge, caching/CloudFront, Route 53 routing. | Domain 3: High-Performing Architectures | 🔲 Not started |
+| **CAB-08** | Final Blitz | 22-24 | **Cert & Portfolio** — Full question-bank review, timed practice exam, portfolio launch. | All domains | 🔲 Not started |
+
+## 🎁 Phase 6: Portfolio Extensions (Optional, Post-Cert)
+
+These are differentiators, not SAA-C03 exam content — pick them up **after** CAB-08 and the exam, not instead of the domain gaps above:
+
+* **CI/CD Automation** — GitHub Actions pipeline to deploy/destroy CDK stacks automatically (ties into the "ephemeral lab" rule below).
+* **Data Ingestion** — Kinesis telemetry ingestion + AWS Glue ETL.
+* **SageMaker/ML Isolation** — PrivateLink and EMR network isolation for a data-science workload.
 
 ## 🛡️ Core Operational Rules
 
@@ -22,7 +34,7 @@
 4. **The "Publicist" Protocol:** Every "Critical" bug found and fixed must trigger the **Portfolio Publicist** to create a GitHub `README.md` or LinkedIn draft.
 5. **Drive Sync:** End every session by updating the **"Roadmap" Google Doc** to ensure persistent tracking across all AI Gems.
 
-## 🛠️ Technical Stack (V2.3)
+## 🛠️ Technical Stack (V3.2)
 
 * **Cloud:** AWS (VPC, IAM, S3, RDS, Lambda, SQS, Kinesis, Bedrock, KMS).
 * **Languages:** Bash (Primary for Infra), Python (Automation/AI), TypeScript (VoltAgent Framework).

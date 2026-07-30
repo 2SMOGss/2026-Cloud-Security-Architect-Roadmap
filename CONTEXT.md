@@ -25,13 +25,12 @@
 3. **Build in Public (BiP):** Documentation of the "Build -> Verify -> Destroy" cycle is a hard requirement for each lab.
 
 ## 📍 Current Status
-* **Phase:** 2 (Secure Architecture Design).
-* **Week:** 06 (Capstone Web Platform).
-* **Completed Tasks:**
-    * Week 1-2: VPC Hardening, Linux Security Auditing.
-    * Week 3-4: Networking Core (NACLs, Subnet isolation).
-    * Week 5: VPC Flow Logs & Incident Response logic.
-    * Documentation for Weeks 1-5 created and refined.
+*(Last synced against `roadmap-v3.2.md` — that file is the source of truth if this drifts again.)*
+* **Completed:** CAB-01 (VPC Plumbing), CAB-03 (KMS & PHI Protection), CAB-04 (Bedrock & Guardrails), CAB-05 (High Availability).
+* **Up next:** CAB-02 (IAM & Zero-Trust) — the only Domain 1 block not yet built.
+* **Not started:** CAB-06 (Cost Optimization, Domain 4), CAB-07 (Serverless Performance, Domain 3), CAB-08 (Final Blitz / Cert Prep).
+* **Side projects:** `sentinel-badge` (Sentinel View Counter badge, Vercel).
+* **Exam-readiness note:** Domain 3 (High-Performing) and Domain 4 (Cost-Optimized) have no hands-on lab coverage yet — CAB-06 and CAB-07 close that gap and should be prioritized over Phase 6 portfolio extensions (CI/CD, Kinesis/Glue, SageMaker).
 
 ## 🤖 AI Interaction Protocol
 * **Antigravity Agent Role:** Cloud Engineer / Executioner.

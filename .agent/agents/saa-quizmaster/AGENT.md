@@ -13,7 +13,7 @@ Facilitates an interactive review session using the historical questions generat
 - "Quiz me on my past labs."
 
 ## 📜 Execution Logic
-1. **Bank Retrieval:** Read `docs/SAA_QUESTION_BANK.md`.
+1. **Bank Retrieval:** Read `assets/docs/SAA_QUESTION_BANK.md`.
 2. **Session Setup:** Ask Robert if he wants a "Random Mix" or a "Deep Dive" into a specific topic (e.g., just VPC Networking).
 3. **Interactive Quiz:** - Present 1 question at a time.
    - Wait for Robert’s answer.

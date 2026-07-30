@@ -5,21 +5,26 @@ Welcome to my 24-week simplified roadmap to the **AWS Solutions Architect Associ
 
 ## 🗂️ Courseware & Weekly Labs
 
-| Week | Block | Phase | Focus | Goal |
-| :--- | :--- | :--- | :--- | :--- |
-| **01-03** | **CAB-01** | Foundations | **VPC Plumbing & CLI** | Build 3-tier VPC via Bash (No Console). |
-| **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** | Initialize EPT & Ulta Agents. |
-| **07-09** | **CAB-03** | Data | **KMS & PHI Protection** | HIPAA/NIST Auditing. |
-| **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** | Deploy Token Watchdog. |
-| **13-15** | **CAB-05** | Resilience | **High Availability** | Zero-Downtime Architecture. |
-| **16-18** | **CAB-06** | DevOps | **CI/CD & VoltOps** | GitHub Actions Automation. |
-| **19-21** | **CAB-07** | Intelligence | **SageMaker Security** | Data Science Isolation. |
-| **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** | SAA-C03 & Market Launch. |
+Canonical source: [`roadmap-v3.2.md`](./roadmap-v3.2.md). Each CAB maps to one SAA-C03 exam domain.
+
+| Week | Block | Phase | Focus | Exam Domain | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **01-03** | **CAB-01** | Foundations | **VPC Plumbing & CLI** — 3-tier VPC via Bash (No Console). | Domain 1 | ✅ Complete |
+| **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** — Least privilege, EPT & Ulta Agents. | Domain 1 | 🔲 Up next |
+| **07-09** | **CAB-03** | Data | **KMS & PHI Protection** — HIPAA/NIST Auditing. | Domain 1 | ✅ Complete |
+| **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** — Zero-exfiltration AI assistant. | Domain 1 | ✅ Complete |
+| **13-15** | **CAB-05** | Resilience | **High Availability** — Zero-Downtime Architecture. | Domain 2 | ✅ Complete |
+| **16-18** | **CAB-06** | Cost | **S3 Lifecycle & Cost Optimization** | Domain 4 | 🔲 Not started |
+| **19-21** | **CAB-07** | Performance | **Serverless Decoupling** — Lambda, SQS, EventBridge. | Domain 3 | 🔲 Not started |
+| **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** — SAA-C03 exam prep & launch. | All | 🔲 Not started |
+
+CI/CD automation, Kinesis/Glue data ingestion, and SageMaker isolation moved to an optional **Phase 6: Portfolio Extensions** (post-cert) — see `roadmap-v3.2.md`.
 
 ## 🗺️ Master Plan
 See the interactive roadmap below (click nodes to navigate):
 - [Mermaid Roadmap Diagram](./MINDMAP.md)
 - [Master Plan & Progress Tracker](./TODO.md)
+- [Full Roadmap Detail](./roadmap-v3.2.md)
 
 
 As part of my 24-week roadmap to the **AWS Solutions Architect Associate (SAA-C03)**, I have architected and deployed a professional-grade Virtual Private Cloud (VPC). This infrastructure is designed for **VitalStream Medical**, a hypothetical medical equipment distributor requiring strict HIPAA-compliant data isolation.
