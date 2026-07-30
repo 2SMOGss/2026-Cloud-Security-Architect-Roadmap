@@ -41,8 +41,18 @@
 | **CAB-02** | IAM Access Analyzer | What does IAM Access Analyzer detect that a manual policy review might miss? | Resource-based policies (S3 bucket policies, KMS key policies, IAM role trust policies, etc.) that grant access to a principal **outside** the account or organization — i.e., unintended external access. |
 | **CAB-02** | Zero-Trust Bucket Policy | Why enforce `aws:PrincipalTag` conditions on a bucket policy instead of relying only on IAM role permissions? | Zero-Trust assumes internal identity alone isn't enough proof of authorization — a resource-based deny-by-default policy blocks access even if a caller's identity-based policy would otherwise allow it. |
 
+## 🏷️ Domain 4: Design Cost-Optimized Architectures
+
+| Week | Concept | Question | Answer |
+| :--- | :--- | :--- | :--- |
+| **CAB-06** | S3 Storage Classes | For medical imaging accessed daily for a month, then rarely, then almost never after a year — what's the cost-optimal tiering? | Standard → Standard-IA (after ~30 days) → Glacier (after ~90 days) → Glacier Deep Archive (after ~180 days), via an S3 Lifecycle Rule. |
+| **CAB-06** | Lifecycle vs Intelligent-Tiering | When should you use S3 Intelligent-Tiering instead of manual lifecycle rules? | When the access pattern is **unpredictable** — Intelligent-Tiering has no retrieval fee (unlike Glacier) and moves objects automatically, at the cost of a small per-object monitoring fee. |
+| **CAB-06** | Encryption Cost Tradeoff | Why choose SSE-S3 over SSE-KMS for a large archival bucket with no key-rotation requirement? | SSE-KMS bills per API call (`kms:GenerateDataKey`, etc.) at scale; SSE-S3 is free. Reserve CMKs (SSE-KMS) for data that specifically needs key-level audit and rotation control. |
+| **CAB-06** | Hidden Cost Leak | A bucket's storage cost is higher than expected even though visible objects are small. What's a common cause? | **Incomplete multipart uploads** that were never aborted — they still consume storage and bill indefinitely unless a lifecycle rule aborts them after N days. |
+| **CAB-06** | Budgets vs Cost Explorer vs Trusted Advisor | What's the difference between these three cost tools? | **AWS Budgets** alerts on actual/forecasted spend against a threshold you set. **Cost Explorer** visualizes and analyzes historical spend trends. **Trusted Advisor** flags specific optimization opportunities (idle EC2, low-utilization RDS, unattached EBS, etc.) as a support-plan feature. |
+
 ---
 ## 🏁 Status Check:
-- **Questions Stored:** 31
-- **Coverage Gap:** No questions yet for Domain 3 (High-Performing Architectures) or Domain 4 (Cost-Optimized Architectures) — add these as CAB-06/CAB-07 are built.
-- **Priority Domain:** Domain 4 (Cost-Optimized Architectures) — currently zero coverage. CAB-02 (Domain 1) is now built; CAB-06 and CAB-07 are the two remaining open blocks.
+- **Questions Stored:** 36
+- **Coverage Gap:** No questions yet for Domain 3 (High-Performing Architectures) — add these as CAB-07 is built.
+- **Priority Domain:** Domain 3 (High-Performing Architectures) — the only domain with zero coverage now that CAB-02 and CAB-06 are built. CAB-07 is the last open block before CAB-08 (Final Blitz).

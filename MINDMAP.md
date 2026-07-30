@@ -18,7 +18,7 @@ mindmap
       Weeks 13-15: Zero-Downtime Architecture - Domain 2 - DONE
     (CAB-06: Cost Optimization)
       ::icon(fa fa-coins)
-      Weeks 16-18: S3 Lifecycle and Storage Classes - Domain 4 - NOT STARTED
+      Weeks 16-18: S3 Lifecycle, Intelligent-Tiering, AWS Budgets - Domain 4 - BUILT, PENDING LIVE VERIFICATION
     (CAB-07: Serverless Performance)
       ::icon(fa fa-bolt)
       Weeks 19-21: Lambda, SQS, EventBridge - Domain 3 - NOT STARTED

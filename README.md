@@ -14,7 +14,7 @@ Canonical source: [`roadmap-v3.2.md`](./roadmap-v3.2.md). Each CAB maps to one S
 | **07-09** | **CAB-03** | Data | **KMS & PHI Protection** — HIPAA/NIST Auditing. | Domain 1 | ✅ Complete |
 | **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** — Zero-exfiltration AI assistant. | Domain 1 | ✅ Complete |
 | **13-15** | **CAB-05** | Resilience | **High Availability** — Zero-Downtime Architecture. | Domain 2 | ✅ Complete |
-| **16-18** | **CAB-06** | Cost | **S3 Lifecycle & Cost Optimization** | Domain 4 | 🔲 Not started |
+| **16-18** | **CAB-06** | Cost | **S3 Lifecycle & Cost Optimization** — Storage tiering, Intelligent-Tiering, AWS Budgets. | Domain 4 | 🟡 Built, pending live verification |
 | **19-21** | **CAB-07** | Performance | **Serverless Decoupling** — Lambda, SQS, EventBridge. | Domain 3 | 🔲 Not started |
 | **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** — SAA-C03 exam prep & launch. | All | 🔲 Not started |
 
