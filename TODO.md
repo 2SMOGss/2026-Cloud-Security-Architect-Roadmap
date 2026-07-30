@@ -7,7 +7,7 @@ Canonical roadmap detail lives in [`roadmap-v3.2.md`](./roadmap-v3.2.md). This f
 | CAB | Focus | Exam Domain | Status |
 | :--- | :--- | :--- | :--- |
 | CAB-01 | VPC Plumbing & CLI | Domain 1 | ✅ Complete |
-| CAB-02 | IAM & Zero-Trust | Domain 1 | 🔲 Up next |
+| CAB-02 | IAM & Zero-Trust | Domain 1 | 🟡 Built, pending live AWS verification (see its `LAB_GUIDE.md`) |
 | CAB-03 | KMS & PHI Protection | Domain 1 | ✅ Complete |
 | CAB-04 | Bedrock & Guardrails | Domain 1 | ✅ Complete |
 | CAB-05 | High Availability | Domain 2 | ✅ Complete |
@@ -19,12 +19,12 @@ Canonical roadmap detail lives in [`roadmap-v3.2.md`](./roadmap-v3.2.md). This f
 
 | Domain | Weight | Labs Covering It | Status |
 | :--- | :--- | :--- | :--- |
-| Domain 1: Secure Architectures | ~30% | CAB-01, 02, 03, 04 | 3 of 4 done |
+| Domain 1: Secure Architectures | ~30% | CAB-01, 02, 03, 04 | 3 of 4 done, 1 built pending live verification |
 | Domain 2: Resilient Architectures | ~26% | CAB-05 | Done |
 | Domain 3: High-Performing Architectures | ~24% | CAB-07 | Not started |
 | Domain 4: Cost-Optimized Architectures | ~20% | CAB-06 | Not started |
 
-**Priority order:** CAB-02 → CAB-06 → CAB-07 → CAB-08. Domain 3 and 4 have zero hands-on coverage right now — close those before Phase 6 extras.
+**Priority order:** Deploy & verify CAB-02 (code is ready) → CAB-06 → CAB-07 → CAB-08. Domain 3 and 4 have zero hands-on coverage right now — close those before Phase 6 extras.
 
 ## Repo Sync Checklist
 

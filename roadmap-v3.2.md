@@ -10,7 +10,7 @@ Each CAB is scoped to one SAA-C03 exam domain so the roadmap tracks exam coverag
 | Block | Phase | Weeks | Focus | Exam Domain | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **CAB-01** | Foundations | 1-3 | **VPC Plumbing & CLI** — Build VitalStream 3-tier VPC by hand (no console). | Domain 1: Secure Architectures | ✅ Complete |
-| **CAB-02** | Security | 4-6 | **IAM & Zero-Trust** — IAM Identity Center, least privilege, initialize EPT & Ulta Agents. | Domain 1: Secure Architectures | 🔲 Up next |
+| **CAB-02** | Security | 4-6 | **IAM & Zero-Trust** — Permission boundary, ABAC-gated role, Zero-Trust bucket policy, IAM Access Analyzer. | Domain 1: Secure Architectures | 🟡 Built, pending live AWS verification |
 | **CAB-03** | Data | 7-9 | **KMS & PHI Protection** — Encryption at rest, HIPAA/NIST auditing, immutable audit logs. | Domain 1: Secure Architectures | ✅ Complete |
 | **CAB-04** | AI | 10-12 | **Bedrock & Guardrails** — Zero-exfiltration AI assistant via PrivateLink + PII/PHI redaction. | Domain 1: Secure Architectures | ✅ Complete |
 | **CAB-05** | Resilience | 13-15 | **High Availability** — Multi-AZ RDS, ASG self-healing, Zero-Downtime chaos audit. | Domain 2: Resilient Architectures | ✅ Complete |

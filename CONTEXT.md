@@ -27,7 +27,7 @@
 ## 📍 Current Status
 *(Last synced against `roadmap-v3.2.md` — that file is the source of truth if this drifts again.)*
 * **Completed:** CAB-01 (VPC Plumbing), CAB-03 (KMS & PHI Protection), CAB-04 (Bedrock & Guardrails), CAB-05 (High Availability).
-* **Up next:** CAB-02 (IAM & Zero-Trust) — the only Domain 1 block not yet built.
+* **Built, pending live verification:** CAB-02 (IAM & Zero-Trust) — CDK code + 5 passing unit tests exist at `assets/cab/CAB-02_IAM_Zero_Trust/`; not yet `cdk deploy`'d against a real account. Follow its `LAB_GUIDE.md` and update its `AUDIT.md` once deployed.
 * **Not started:** CAB-06 (Cost Optimization, Domain 4), CAB-07 (Serverless Performance, Domain 3), CAB-08 (Final Blitz / Cert Prep).
 * **Side projects:** `sentinel-badge` (Sentinel View Counter badge, Vercel).
 * **Exam-readiness note:** Domain 3 (High-Performing) and Domain 4 (Cost-Optimized) have no hands-on lab coverage yet — CAB-06 and CAB-07 close that gap and should be prioritized over Phase 6 portfolio extensions (CI/CD, Kinesis/Glue, SageMaker).

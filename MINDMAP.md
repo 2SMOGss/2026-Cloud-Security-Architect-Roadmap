@@ -6,7 +6,7 @@ mindmap
       Weeks 1-3: 3-Tier VPC via Bash - Domain 1 - DONE
     (CAB-02: IAM and Zero-Trust)
       ::icon(fa fa-shield-halved)
-      Weeks 4-6: Least Privilege, EPT and Ulta Agents - Domain 1 - UP NEXT
+      Weeks 4-6: Permission Boundary, ABAC, Access Analyzer - Domain 1 - BUILT, PENDING LIVE VERIFICATION
     (CAB-03: Data and PHI Protection)
       ::icon(fa fa-lock)
       Weeks 7-9: KMS Encryption and HIPAA Auditing - Domain 1 - DONE

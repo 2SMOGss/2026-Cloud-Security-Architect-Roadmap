@@ -35,9 +35,14 @@
 | **CAB-05** | Instance Refresh | Benefit of ASG Instance Refresh over manual termination? | Performs a **controlled rolling update**, maintaining `MinHealthyPercentage` while deploying new Launch Template versions. |
 | **CAB-05** | Private Updates | How do instances in isolated subnets download OS patches securely? | Via a **NAT Gateway** in a Public Subnet (or VPC Endpoints for specific AWS services). |
 | **CAB-05** | 502 Bad Gateway | #1 cause of ALB returning 502 with healthy EC2 instances? | **Security Group mismatch**: The EC2 SG does not allow ingress from the ALB's SG on the application port. |
+| **CAB-02** | Permission Boundaries | What does an IAM Permissions Boundary actually control? | It sets the **maximum** permissions a role/user can have — the role's own identity-based policies can only narrow access further, never exceed the boundary. |
+| **CAB-02** | ABAC | What is Attribute-Based Access Control (ABAC), and why use it over per-resource roles? | Access decisions are based on **tags** (e.g., `aws:PrincipalTag`, `aws:ResourceTag`) instead of hardcoding a role per resource — it scales least privilege without policy sprawl. |
+| **CAB-02** | Resource vs Identity Policy Precedence | If an identity-based policy allows an action but a resource-based (bucket) policy explicitly denies it, what wins? | An explicit **Deny** always wins, regardless of which policy type it's on. |
+| **CAB-02** | IAM Access Analyzer | What does IAM Access Analyzer detect that a manual policy review might miss? | Resource-based policies (S3 bucket policies, KMS key policies, IAM role trust policies, etc.) that grant access to a principal **outside** the account or organization — i.e., unintended external access. |
+| **CAB-02** | Zero-Trust Bucket Policy | Why enforce `aws:PrincipalTag` conditions on a bucket policy instead of relying only on IAM role permissions? | Zero-Trust assumes internal identity alone isn't enough proof of authorization — a resource-based deny-by-default policy blocks access even if a caller's identity-based policy would otherwise allow it. |
 
 ---
 ## 🏁 Status Check:
-- **Questions Stored:** 26
+- **Questions Stored:** 31
 - **Coverage Gap:** No questions yet for Domain 3 (High-Performing Architectures) or Domain 4 (Cost-Optimized Architectures) — add these as CAB-06/CAB-07 are built.
-- **Priority Domain:** Domain 4 (Cost-Optimized Architectures) — currently zero coverage, and CAB-02 (Domain 1) is the only other open block.
+- **Priority Domain:** Domain 4 (Cost-Optimized Architectures) — currently zero coverage. CAB-02 (Domain 1) is now built; CAB-06 and CAB-07 are the two remaining open blocks.

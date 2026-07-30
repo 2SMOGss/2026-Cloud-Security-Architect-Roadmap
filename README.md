@@ -10,7 +10,7 @@ Canonical source: [`roadmap-v3.2.md`](./roadmap-v3.2.md). Each CAB maps to one S
 | Week | Block | Phase | Focus | Exam Domain | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **01-03** | **CAB-01** | Foundations | **VPC Plumbing & CLI** — 3-tier VPC via Bash (No Console). | Domain 1 | ✅ Complete |
-| **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** — Least privilege, EPT & Ulta Agents. | Domain 1 | 🔲 Up next |
+| **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** — Permission boundary, ABAC, Zero-Trust bucket policy. | Domain 1 | 🟡 Built, pending live verification |
 | **07-09** | **CAB-03** | Data | **KMS & PHI Protection** — HIPAA/NIST Auditing. | Domain 1 | ✅ Complete |
 | **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** — Zero-exfiltration AI assistant. | Domain 1 | ✅ Complete |
 | **13-15** | **CAB-05** | Resilience | **High Availability** — Zero-Downtime Architecture. | Domain 2 | ✅ Complete |
