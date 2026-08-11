@@ -19,6 +19,10 @@
 * **Infrastructure as Code:** Mandatory AWS CDK (Python).
 * **Security Principle:** Least Privilege and Zero-Trust architecture.
 
+## 🎯 Certification Targets
+* **AWS Certified AI Practitioner (AIF-C01):** Foundational, concept-based exam — not tied to a specific CAB. Recommend sitting early (~Week 6-8, after CAB-02) rather than waiting for CAB-07, so a credential is in hand while the SAA-C03 build continues.
+* **AWS Certified Solutions Architect – Associate (SAA-C03):** Primary target, capstone of CAB-08 (Weeks 22-24). CAB-01 through CAB-07 map to its four exam domains (Secure / Resilient / High-Performing / Cost-Optimized Architectures).
+
 ## 🛡️ The Mentors "Ephemeral Architect" Protocol (Golden Rules)
 1. **Low-Cost Ephemerality:** All labs must be "spun up" for learning and "torn down" (cdk destroy) immediately after. No resources left running.
 2. **IaC First:** AWS CDK (Python) is the mandatory standard. No more manual console or bash-only infrastructure.
