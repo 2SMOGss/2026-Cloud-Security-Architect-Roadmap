@@ -11,7 +11,7 @@ Welcome to my **V2.3**, 24-week simplified roadmap to the **AWS Solutions Archit
 | **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** | Initialize EPT & Ulta Agents. |
 | **07-09** | **CAB-03** | Storage/Cost | **KMS & S3 Lifecycle** | Encryption at rest + PHI cost-tiering. |
 | **10-12** | **CAB-04** | Serverless | **The Serverless Triage** | Decouple via Lambda/SQS/EventBridge. Token Watchdog. |
-| **13-15** | **CAB-05** | Resilience | **High Availability** | Zero-Downtime Architecture. |
+| **13-15** | **CAB-05** | Resilience | **High Availability** | Multi-AZ, Route 53 failover & CloudFront for zero-downtime. |
 | **16-18** | **CAB-06** | Data Flow | **Ingestion & DevOps** | Kinesis + Glue ETL via GitHub Actions. |
 | **19-21** | **CAB-07** | Intelligence | **SageMaker Security** | Data Science Isolation + Bedrock Guardrails. |
 | **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** | SAA-C03 & Market Launch. |
