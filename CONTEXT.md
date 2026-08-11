@@ -14,7 +14,7 @@
 * **Key Needs:** Secure remote access for sales teams and total isolation for Patient Protected Health Information (PHI).
 
 ## 🛠️ Technical Strategy
-* **Methodology:** 16-Week AI-First Structured Roadmap (Roadmap V2).
+* **Methodology:** 24-Week AI-First Structured Roadmap (Roadmap V2.3).
 * **Cloud Provider:** AWS (Primary Region: us-east-1).
 * **Infrastructure as Code:** Mandatory AWS CDK (Python).
 * **Security Principle:** Least Privilege and Zero-Trust architecture.
