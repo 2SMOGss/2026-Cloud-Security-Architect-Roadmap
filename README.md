@@ -1,7 +1,7 @@
 # 🏥 AWS Journey 2026: VitalStream Medical Infrastructure
 *From Paramedic to Cloud Security Architect*
 
-Welcome to my 24-week simplified roadmap to the **AWS Solutions Architect Associate (SAA-C03)**. This repository documents my journey building secure, HIPAA-compliant cloud infrastructure pattern by pattern.
+Welcome to my **V2.3**, 24-week simplified roadmap to the **AWS Solutions Architect Associate (SAA-C03)**. This repository documents my journey building secure, HIPAA-compliant cloud infrastructure pattern by pattern.
 
 ## 🗂️ Courseware & Weekly Labs
 
@@ -9,11 +9,11 @@ Welcome to my 24-week simplified roadmap to the **AWS Solutions Architect Associ
 | :--- | :--- | :--- | :--- | :--- |
 | **01-03** | **CAB-01** | Foundations | **VPC Plumbing & CLI** | Build 3-tier VPC via Bash (No Console). |
 | **04-06** | **CAB-02** | Security | **IAM & Zero-Trust** | Initialize EPT & Ulta Agents. |
-| **07-09** | **CAB-03** | Data | **KMS & PHI Protection** | HIPAA/NIST Auditing. |
-| **10-12** | **CAB-04** | AI | **Bedrock & Guardrails** | Deploy Token Watchdog. |
+| **07-09** | **CAB-03** | Storage/Cost | **KMS & S3 Lifecycle** | Encryption at rest + PHI cost-tiering. |
+| **10-12** | **CAB-04** | Serverless | **The Serverless Triage** | Decouple via Lambda/SQS/EventBridge. Token Watchdog. |
 | **13-15** | **CAB-05** | Resilience | **High Availability** | Zero-Downtime Architecture. |
-| **16-18** | **CAB-06** | DevOps | **CI/CD & VoltOps** | GitHub Actions Automation. |
-| **19-21** | **CAB-07** | Intelligence | **SageMaker Security** | Data Science Isolation. |
+| **16-18** | **CAB-06** | Data Flow | **Ingestion & DevOps** | Kinesis + Glue ETL via GitHub Actions. |
+| **19-21** | **CAB-07** | Intelligence | **SageMaker Security** | Data Science Isolation + Bedrock Guardrails. |
 | **22-24** | **CAB-08** | Final Blitz | **Cert & Portfolio** | SAA-C03 & Market Launch. |
 
 ## 🗺️ Master Plan
