@@ -15,7 +15,7 @@ mindmap
       Weeks 10-12: Lambda, SQS & EventBridge + Token Watchdog
     (CAB-05: High Availability)
       ::icon(fa fa-server)
-      Weeks 13-15: "Zero-Downtime" Architecture
+      Weeks 13-15: Multi-AZ, Route 53 & CloudFront for "Zero-Downtime"
     (CAB-06: Data Flow & DevOps)
       ::icon(fa fa-code-commit)
       Weeks 16-18: Kinesis, Glue ETL & GitHub Actions (VoltAgent Framework)
